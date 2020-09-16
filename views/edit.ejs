@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Desafio 1 - CRUD</title>
+    </head>
+
+    <body>
+        <h2>Editar registro(s)<h2>
+        <% data.forEach(function(details) { %>
+            <form action="/edit/<%= details._id %>" method="POST">
+                <input type="text" value="<%= details.nome %>" name="nome">
+                <input type="text" value="<%= details.sobrenome %>" name="sobrenome">
+                <input type="email" value="<%= details.email %>" name="email">
+                <input type="text" value="<%= details.contato1 %>" name="contato1">
+                <input type="text" value="<%= details.contato2 %>" name="contato2">
+                <input type="text" value="<%= details.endereco %>" name="endereco">
+                <input type="text" value="<%= details.complemento %>" name="complemento">
+                <input type="text" value="<%= details.cep %>" name="cep">
+                <input type="text" value="<%= details.estado %>" name="estado">
+                <input type="text" value="<%= details.cidade %>" name="cidade">
+                <br />
+                <button><a href="/show">Voltar</a></button>
+                <button type="submit">Confirmar</button>
+            </form>
+        <% }) %>
+    </body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>Desafio 1 - CRUD</title>
+        <link rel="canonical" href="/docs/4.5/examples/checkout/">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    </head>
+
+    <body class="bg-light">
+        <div class="container">
+            <div class="py-5 text-center">
+                <h2>Cadastro de Clientes</h2>
+            </div>
+
+            <form action="/show" method="POST">
+                <div class="col-md-12 order-md-1">
+                    <h4 class="mb-3">Dados Pessoais</h4>
+                    <form class="dados-pessoais" novalidate>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="primeiroNome">Primeiro nome</label>
+                                <input type="text" class="form-control" id="tagzera" name="nome" required>
+                            
+                                <div class="invalid-feedback">
+                                    Campo obrigatório
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName">Último nome</label>
+                                <input type="text" class="form-control" name="sobrenome" value="" required>
+                                
+                                <div class="invalid-feedback">
+                                    Campo obrigatório
+                                </div>
+                            </div>
+                        </div>
+                  
+                        <div class="mb-3">
+                            <label for="email">E-mail</label>
+                            <input type="email" class="form-control" name="email" required>
+                            
+                            <div class="invalid-feedback">
+                                Campo obrigatório
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="contato1">Contato 1</label>
+                                <input type="text" class="form-control" name="contato1">
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="contato2">Contato 2</label>
+                                <input type="text" class="form-control" name="contato2" value="">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="endereco">Endereço</label>
+                            <input type="text" class="form-control" name="endereco" required>
+                            
+                            <div class="invalid-feedback">
+                                Insira um endereço válido
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="complemento">Complemento</label>
+                            <input type="text" class="form-control" name="complemento">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <label for="cep">CEP</label>
+                                <input type="text" class="form-control" name="cep" placeholder="" required>
+                                
+                                <div class="invalid-feedback">
+                                    Insira um CEP válido
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label for="cidade">Cidade</label>
+                                <input type="text" class="form-control" name="cidade" placeholder="" required>
+                                
+                                <div class="invalid-feedback">
+                                    Informe um estado válido
+                                </div>
+                            </div>
+
+                            <div class="col-md-5 mb-3">
+                                <label for="estado">Estado</label>
+                                <input type="text" class="form-control" name="estado" placeholder="" required>
+                              
+                                <div class="invalid-feedback">
+                                    Selecione um estado válido
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="mb-4">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Enviar</button>
+                </div>
+            </form>
+        </div>
+
+        <footer class="my-5 pt-5 text-muted text-center text-small">
+            <p class="mb-1">&copy; 2020-2020 Biblioteca UNIFACS</p>
+        </footer>
+    </body>
+</html>
