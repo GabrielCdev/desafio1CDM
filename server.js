@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
+const path = require('path');
+
 const ObjectId = require('mongodb').ObjectID;
 
 const MongoClient = require('mongodb').MongoClient;
@@ -17,6 +19,8 @@ MongoClient.connect(uri, (err, client) => {
 });
 
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.static(path.join(__dirname,'public')));
 
 app.set('view engine', 'ejs');
 

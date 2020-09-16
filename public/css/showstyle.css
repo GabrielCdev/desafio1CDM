@@ -8,6 +8,10 @@ body {
     text-align: center;
 }
 
+.inputs-bd {
+    text-align: center;
+}
+
 .table-responsive {
     margin: 30px 0;
 }
@@ -97,7 +101,7 @@ table.table td a.delete {
 table.table td i {
     font-size: 19px;
 }
-    
+
 .pagination {
     float: right;
     margin: 0 0 5px;
@@ -119,7 +123,7 @@ table.table td i {
 .pagination li a:hover {
     color: #666;
 }
-	
+
 .pagination li.active a {
     background: #03A9F4;
 }
@@ -142,4 +146,3 @@ table.table td i {
     margin-top: 6px;
     font-size: 95%;
 }
-    
