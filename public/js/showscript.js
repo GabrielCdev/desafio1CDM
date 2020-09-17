@@ -1,3 +1,4 @@
+// Filter
 function myFunction() {
     let input, filter, table, tr, td, i, txtValue;
 
@@ -20,3 +21,5 @@ function myFunction() {
         }
     }
 }
+
+// Máscaras
