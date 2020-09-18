@@ -7,11 +7,11 @@ const path = require('path');
 const ObjectId = require('mongodb').ObjectID;
 
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://desafio1cdm:desafio1cdm@desafio1cdm.njqir.mongodb.net/Desafio1CDM";
+const uri = "mongodb+srv://desafio1cdm:<password>@desafio1cdm.njqir.mongodb.net/<dbname>";
 
 MongoClient.connect(uri, (err, client) => {
     if (err) return console.log(err);
-    db = client.db('Desafio1CDM');
+    db = client.db('<dbname>');
 
     app.listen(3000, () => {
         console.log('Server running on port 3000');
