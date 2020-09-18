@@ -6,3 +6,4 @@ Dener Felipe
 Gabriel Brito
 Gabriel Calheiros
 Guido Gusmão
+Jeferson Lucas
