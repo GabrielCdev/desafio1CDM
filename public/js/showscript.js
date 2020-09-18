@@ -21,7 +21,3 @@ function myFunction() {
         }
     }
 }
-
-// Máscaras
-$("#cep").mask("999.999-99");
-$("#contato").mask("(99) 99999-9999");
