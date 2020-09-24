@@ -1,27 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Desafio 1 - CRUD</title>
-    <link rel="stylesheet" href="/css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
   </head>
 
   <body>
@@ -36,10 +24,7 @@
         </div>
         <div class="table-responsive">
           <div class="table-wrapper">
-            <table
-              class="table table-striped table-hover table-bordered"
-              id="myTable"
-            >
+            <table class="table table-striped table-hover table-bordered" id="myTable">
               <thead>
                 <tr>
                   <th class="form-title">Nome</th>
@@ -54,89 +39,39 @@
                   <th class="form-title">Estado</th>
                 </tr>
               </thead>
+
               <tbody>
                 <% clientes.forEach(function(details) { %>
                 <form action="/edit-funcionario/<%= details._id %>">
                   <td>
-                    <input
-                      type="text"
-                      value="<%= details.nome %>"
-                      name="nome"
-                      required
-                    />
+                    <input type="text" value="<%= details.nome %>" name="nome" required/>
                   </td>
                   <td>
-                    <input
-                      type="text"
-                      value="<%= details.sobrenome %>"
-                      name="sobrenome"
-                      required
-                    />
+                    <input type="text" value="<%= details.sobrenome %>" name="sobrenome" required/>
                   </td>
                   <td>
-                    <input
-                      type="email"
-                      value="<%= details.email %>"
-                      name="email"
-                      required
-                    />
+                    <input type="email" value="<%= details.email %>" name="email" required/>
                   </td>
                   <td>
-                    <input
-                      type="text"
-                      value="<%= details.contato1 %>"
-                      name="contato1"
-                      maxlength="14"
-                      required
-                    />
+                    <input type="text" value="<%= details.contato1 %>" name="contato1" maxlength="14" required/>
                   </td>
                   <td>
-                    <input
-                      type="text"
-                      value="<%= details.contato2 %>"
-                      name="contato2"
-                      maxlength="14"
-                    />
+                    <input type="text" value="<%= details.contato2 %>" name="contato2" maxlength="14"/>
                   </td>
                   <td>
-                    <input
-                      type="text"
-                      value="<%= details.endereco %>"
-                      name="endereco"
-                      required
-                    />
+                    <input type="text" value="<%= details.endereco %>" name="endereco" required/>
                   </td>
                   <td>
-                    <input
-                      type="text"
-                      value="<%= details.complemento %>"
-                      name="complemento"
-                      required
-                    />
+                    <input type="text" value="<%= details.complemento %>" name="complemento" required/>
                   </td>
                   <td>
-                    <input
-                      type="text"
-                      value="<%= details.cep %>"
-                      name="cep"
-                      maxlength="10"
-                      required
-                    />
+                    <input type="text" value="<%= details.cep %>" name="cep" maxlength="10" required/>
                   </td>
                   <td>
-                    <input
-                      type="text"
-                      value="<%= details.cidade %>"
-                      name="cidade"
-                      required
-                    />
+                    <input type="text" value="<%= details.cidade %>" name="cidade" required/>
                   </td>
                   <td>
-                    <input
-                      type="text"
-                      value="<%= details.estado %>"
-                      name="estado"
-                    />
+                    <input type="text" value="<%= details.estado %>" name="estado"/>
                   </td>
                 </form>
                 <% }) %>
@@ -146,7 +81,7 @@
         </div>
         <a href="/show-cliente" class="btn btn-primary">Voltar</a>
         &nbsp;
-        <input type="submit" class="btn btn-success" value="Confirmar" />
+        <input type="submit" class="btn btn-success" value="Confirmar"/>
       </form>
     </div>
   </body>
