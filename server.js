@@ -1,66 +1,66 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser');
 
-const path = require("path");
+const path = require('path');
 
-const ObjectId = require("mongodb").ObjectID;
+const ObjectId = require('mongodb').ObjectID;
 
-const MongoClient = require("mongodb").MongoClient;
+const MongoClient = require('mongodb').MongoClient;
 const uri =
-  "mongodb+srv://desafio1cdm:desafio1cdm@desafio1cdm.njqir.mongodb.net/Desafio1CDM";
+  'mongodb+srv://desafio1cdm:desafio1cdm@desafio1cdm.njqir.mongodb.net/Desafio1CDM';
 
 MongoClient.connect(uri, (err, client) => {
   if (err) return console.log(err);
-  db = client.db("Desafio1CDM");
+  db = client.db('Desafio1CDM');
 
   app.listen(3000, () => {
-    console.log("Server running on port 3000");
+    console.log('Server running on port 3000');
   });
 });
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.set("view engine", "ejs");
+app.set('view engine', 'ejs');
 
-app.get("/", (req, res) => {
-  res.render("index.ejs");
+app.get('/', (req, res) => {
+  res.render('index-cliente.ejs');
 });
 
-app.get("/", (req, res) => {
-  let cursor = db.collection("data").find();
+app.get('/', (req, res) => {
+  let cursor = db.collection('clientes').find();
 });
 
-app.get("/show", (req, res) => {
-  db.collection("data")
+app.get('/show-cliente', (req, res) => {
+  db.collection('clientes')
     .find()
     .toArray((err, results) => {
       if (err) return console.log(err);
-      res.render("show.ejs", { data: results });
+      res.render('show-cliente.ejs', { clientes: results });
     });
 });
 
-app.post("/show", (req, res) => {
-  db.collection("data").save(req.body, (err, result) => {
+app.post('/show-cliente', (req, res) => {
+  db.collection('clientes').save(req.body, (err, result) => {
     if (err) return console.log(err);
 
-    console.log("Save in DB");
-    res.redirect("/show");
+    console.log('Save in DB');
+    res.redirect('/show-cliente');
   });
 });
 
 app
-  .route("/edit/:id")
+  .route('/edit-cliente/:id')
   .get((req, res) => {
     let id = req.params.id;
 
-    db.collection("data")
+    db.collection('clientes')
       .find(ObjectId(id))
       .toArray((err, result) => {
         if (err) return res.send(err);
-        res.render("edit.ejs", { data: result });
+        res.render('edit-cliente.ejs', { clientes: result });
       });
   })
   .post((req, res) => {
@@ -76,7 +76,7 @@ app
     let estado = req.body.estado;
     let cidade = req.body.cidade;
 
-    db.collection("data").updateOne(
+    db.collection('clientes').updateOne(
       { _id: ObjectId(id) },
       {
         $set: {
@@ -94,18 +94,18 @@ app
       },
       (err, result) => {
         if (err) return res.send(err);
-        res.redirect("/show");
-        console.log("Updated in DB!");
+        res.redirect('/show-cliente');
+        console.log('Updated in DB!');
       }
     );
   });
 
-app.route("/delete/:id").get((req, res) => {
+app.route('/delete/:id').get((req, res) => {
   let id = req.params.id;
 
-  db.collection("data").deleteOne({ _id: ObjectId(id) }, (err, result) => {
+  db.collection('clientes').deleteOne({ _id: ObjectId(id) }, (err, result) => {
     if (err) return res.send(500, err);
-    console.log("Deleted in DB!");
-    res.redirect("/show");
+    console.log('Deleted in DB!');
+    res.redirect('/show-cliente');
   });
 });
