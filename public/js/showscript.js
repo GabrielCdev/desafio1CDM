@@ -23,23 +23,34 @@ function filterFunction() {
 }
 
   
-// Máscara de CPF
-function MascaraCPF() {
-
-  let cpf = document.getElementById('cpf')
-  if (cpf.value.length == 3 || cpf.value.length == 7) {
-      cpf.value += "."
-  } else if (cpf.value.length == 11) {
-      cpf.value += "-"
+// Máscara de contato
+function contatoMask() {
+  let contato1 = document.getElementById('contato1');
+  
+  if (contato1.value.length === 2) {
+    contato1.value += " ";
+  } else if (contato1.value.length === 8 || contato1.value.length === 9) {
+    contato1.value += "-";
   }
 }
+
+function contatoMask2() {
+  let contato2 = document.getElementById('contato2');
+  
+  if (contato2.value.length === 2) {
+    contato2.value += " ";
+  } else if (contato2.value.length === 8 || contato2.value.length === 9) {
+    contato2.value += "-";
+  }
+}
+
 // Máscara de CEP
 function cepMask() {
+  let cep = document.getElementById('cep');
 
-  let cep = document.getElementById('cep')
-  if (cep.value.length == 2) {
-      cep.value += "."
-  } else if (cep.value.length == 6) {
-      cep.value += "-"
+  if (cep.value.length === 2) {
+    cep.value += ".";
+  } else if (cep.value.length === 6) {
+    cep.value += "-";
   }
 }

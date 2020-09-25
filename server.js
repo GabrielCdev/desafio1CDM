@@ -103,11 +103,11 @@ app.route('/delete/:id').get((req, res) => {
 
 
 // Empresa
-app.get('/', (req, res) => {
+app.get('/empresa', (req, res) => {
     res.render('index-empresa.ejs');
 });
 
-app.get('/', (req, res) => {
+app.get('/empresa', (req, res) => {
     let cursor = db.collection('empresa').find();
 });
 
@@ -161,7 +161,6 @@ app.route('/edit-empresa/:id').get((req, res) => {
                 InpEs: InpEs
 
             },
-
         },
         (err, result) => {
             if (err) return res.send(err)
