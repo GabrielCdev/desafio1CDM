@@ -24,21 +24,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
+// Cliente
+app.get('/cliente', (req, res) => {
     res.render('index-cliente.ejs');
 });
 
-app.get('/', (req, res) => {
+app.get('/cliente', (req, res) => {
     let cursor = db.collection('clientes').find();
 });
 
 app.get('/show-cliente', (req, res) => {
-    db.collection('clientes')
-        .find()
-        .toArray((err, results) => {
-            if (err) return console.log(err);
-            res.render('show-cliente.ejs', { clientes: results });
-        });
+    db.collection('clientes').find().toArray((err, results) => {
+        if (err) return console.log(err);
+        res.render('show-cliente.ejs', { clientes: results });
+    });
 });
 
 app.post('/show-cliente', (req, res) => {
@@ -102,7 +101,8 @@ app.route('/delete/:id').get((req, res) => {
     });
 });
 
-//Cadastro empresa
+
+// Empresa
 app.get('/', (req, res) => {
     res.render('index-empresa.ejs');
 });
@@ -181,9 +181,8 @@ app.route('/delete/:id').get((req, res) => {
 });
 
 
-//Empréstimo-devolução
-
-app.get('/', (req, res) => {
+// Empréstimo-Devolução
+app.get('/emprestimo', (req, res) => {
     res.render('indexEmprestimo.ejs');
 });
 
@@ -195,7 +194,6 @@ app.get('/showEmprestimo', (req, res) => {
 });
 
 app.post('/showEmprestimo', (req, res) => {
-
     db.collection('emprestimo_devolucao').save(req.body, (err, result) => {
         if (err) return console.log(err);
         console.log('Salvo no Banco de Dados');
@@ -203,53 +201,50 @@ app.post('/showEmprestimo', (req, res) => {
     });
 });
 
-app.route('/editEmprestimo/:id')
-    .get((req, res) => {
-        let id = req.params.id
+app.route('/editEmprestimo/:id').get((req, res) => {
+    let id = req.params.id
 
-        db.collection('emprestimo_devolucao').find(ObjectId(id)).toArray((err, result) => {
-            if (err) return res.send(err);
-            res.render('editEmprestimo.ejs', { data: result });
-        });
-    })
-    .post((req, res) => {
-        let id = req.params.id
-        let name = req.body.name
-        let surname = req.body.surname
-        let cpf = req.body.cpf
-        let telefone = req.body.telefone
-        let endereco = req.body.endereco
-        let data = req.body.data
-        let data2 = req.body.data2
-        let livroEmprestado = req.body.livroEmprestado
-        let multa = req.body.multa
-
-        db.collection('emprestimo_devolucao').updateOne({ _id: ObjectId(id) }, {
-            $set: {
-                name: name,
-                surname: surname,
-                cpf: cpf,
-                telefone: telefone,
-                endereco: endereco,
-                data: data,
-                data2: data2,
-                livroEmprestado: livroEmprestado,
-                multa: multa
-            }
-        }, (err, result) => {
-            if (err) return res.send(err);
-            res.redirect('/showEmprestimo');
-            console.log('Atualizado no Banco de Dados');
-        });
+    db.collection('emprestimo_devolucao').find(ObjectId(id)).toArray((err, result) => {
+        if (err) return res.send(err);
+        res.render('editEmprestimo.ejs', { data: result });
     });
+}).post((req, res) => {
+    let id = req.params.id
+    let name = req.body.name
+    let surname = req.body.surname
+    let cpf = req.body.cpf
+    let telefone = req.body.telefone
+    let endereco = req.body.endereco
+    let data = req.body.data
+    let data2 = req.body.data2
+    let livroEmprestado = req.body.livroEmprestado
+    let multa = req.body.multa
 
-app.route('/delete/:id')
-    .get((req, res) => {
-        let id = req.params.id
-
-        db.collection('emprestimo_devolucao').deleteOne({ _id: ObjectId(id) }, (err, result) => {
-            if (err) return res.send(500, err);
-            console.log('Deletado do Banco de Dados!');
-            res.redirect('/showEmprestimo');
-        });
+    db.collection('emprestimo_devolucao').updateOne({ _id: ObjectId(id) }, {
+        $set: {
+            name: name,
+            surname: surname,
+            cpf: cpf,
+            telefone: telefone,
+            endereco: endereco,
+            data: data,
+            data2: data2,
+            livroEmprestado: livroEmprestado,
+            multa: multa
+        }
+    }, (err, result) => {
+        if (err) return res.send(err);
+        res.redirect('/showEmprestimo');
+        console.log('Atualizado no Banco de Dados');
     });
+});
+
+app.route('/delete/:id').get((req, res) => {
+    let id = req.params.id
+
+    db.collection('emprestimo_devolucao').deleteOne({ _id: ObjectId(id) }, (err, result) => {
+        if (err) return res.send(500, err);
+        console.log('Deletado do Banco de Dados!');
+        res.redirect('/showEmprestimo');
+    });
+});
