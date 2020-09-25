@@ -21,3 +21,25 @@ function filterFunction() {
     }
   }
 }
+
+  
+// Máscara de CPF
+function MascaraCPF() {
+
+  let cpf = document.getElementById('cpf')
+  if (cpf.value.length == 3 || cpf.value.length == 7) {
+      cpf.value += "."
+  } else if (cpf.value.length == 11) {
+      cpf.value += "-"
+  }
+}
+// Máscara de CEP
+function cepMask() {
+
+  let cep = document.getElementById('cep')
+  if (cep.value.length == 2) {
+      cep.value += "."
+  } else if (cep.value.length == 6) {
+      cep.value += "-"
+  }
+}
