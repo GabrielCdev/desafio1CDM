@@ -91,7 +91,7 @@ app.route('/edit-cliente/:id').get((req, res) => {
     });
 });
 
-app.route('/delete/:id').get((req, res) => {
+app.route('/delete-cliente/:id').get((req, res) => {
     let id = req.params.id;
 
     db.collection('clientes').deleteOne({ _id: ObjectId(id) }, (err, result) => {
@@ -169,7 +169,7 @@ app.route('/edit-empresa/:id').get((req, res) => {
         });
 })
 
-app.route('/delete/:id').get((req, res) => {
+app.route('/delete-empresa/:id').get((req, res) => {
     let id = req.params.id;
 
     db.collection('empresa').deleteOne({ _id: ObjectId(id) }, (err, result) => {
@@ -238,7 +238,7 @@ app.route('/editEmprestimo/:id').get((req, res) => {
     });
 });
 
-app.route('/delete/:id').get((req, res) => {
+app.route('/deleteEmprestimo/:id').get((req, res) => {
     let id = req.params.id
 
     db.collection('emprestimo_devolucao').deleteOne({ _id: ObjectId(id) }, (err, result) => {
