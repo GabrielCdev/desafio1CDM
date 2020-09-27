@@ -247,3 +247,80 @@ app.route('/deleteEmprestimo/:id').get((req, res) => {
         res.redirect('/showEmprestimo');
     });
 });
+
+// Livro
+
+app.get('/livros', (req, res) => {
+    res.render('index-livros.ejs');
+});
+
+app.get('/livros', (req, res) => {
+    let cursor = db.collection('livros').find();
+});
+
+app.get('/show-livros', (req, res) => {
+    db.collection('livros').find().toArray((err, results) => {
+        if (err) return console.log(err);
+        res.render('show-livros.ejs', { livros: results });
+    });
+});
+
+app.post('/show-livros', (req, res) => {
+    db.collection('livros').save(req.body, (err, result) => {
+        if (err) return console.log(err);
+        console.log('Salvo no Banco de Dados');
+        res.redirect('/show-livros');
+    });
+});
+
+app.route('/edit-livros/:id').get((req, res) => {
+    let id = req.params.id;
+  
+    db.collection('livros').find(ObjectId(id)).toArray((err, result) => {
+         if(err) return res.send(err)
+          res.render('edit-livros.ejs', { livros: result });
+    });
+  })
+
+.post((req, res) => {
+    let id = req.params.id
+    let titulo = req.body.titulo
+    let subtitulo = req.body.subtitulo
+    let autor = req.body.autor
+    let edicao = req.body.edicao
+    let editora = req.body.editora
+    let genero = req.body.genero
+    let idioma = req.body.idioma
+    let ano = req.body.ano
+    let qtd = req.body.qtd
+
+
+    db.collection('livros').updateOne({_id: ObjectId(id)}, {
+        $set: {
+            titulo: titulo,
+            subtitulo: subtitulo,
+            autor : autor,
+            edicao : edicao,
+            editora : editora,
+            genero : genero,
+            idioma : idioma,
+            ano : ano,
+            qtd : qtd
+        }
+    }, (err, result) => {
+        if (err) return res.send(err);
+        res.redirect('/show-livros');
+        console.log('Atualizado no Banco de Dados');
+    });
+});
+
+app.route('/delete-livros/:id')
+.get((req, res) => {
+    let id = req.params.id
+
+    db.collection('livros').deleteOne({_id: ObjectId(id)}, (err, result) => {
+        if (err) return res.send (500, err);
+        console.log('Deletado do Banco de Dados!');
+        res.redirect('/show-livros');
+    });
+});

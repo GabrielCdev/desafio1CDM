@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Desafio 1 - CRUD</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+  </head>
+
+  <body>
+    <div class="container">
+      <form method="POST">
+        <div class="col-md-12 order-md-1">
+          <div class="row">
+            <div class="py-3 col-sm-8">
+              <h2><b>Editar Registro</b></h2>
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <div class="table-wrapper">
+            <table class="table table-striped table-hover table-bordered" id="myTable">
+              <thead>
+                <tr>
+                  <th class="form-title">Título</th>
+                  <th class="form-title">Subtítulo</th>
+                  <th class="form-title">Autor</th>
+                  <th class="form-title">Edição</th>
+                  <th class="form-title">Editora</th>
+                  <th class="form-title">Gênero</th>
+                  <th class="form-title">Idioma</th>
+                  <th class="form-title">Ano</th>
+                  <th class="form-title">Qtd. de Exemplares</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% livros.forEach(function(details) { %>
+                <form action="/edit-funcionario/<%= details._id %>">
+                  <td>
+                    <input type="text" value="<%= details.titulo %>" name="titulo" required/>
+                  </td>
+                  <td>
+                    <input type="text" value="<%= details.subtitulo %>" name="subtitulo"/>
+                  </td>
+                  <td>
+                    <input type="text" value="<%= details.autor %>" name="autor" required/>
+                  </td>
+                  <td>
+                    <input type="text" value="<%= details.edicao %>" name="edicao" maxlength="10" required/>
+                  </td>
+                  <td>
+                    <input type="text" value="<%= details.editora %>" name="editora" required/>
+                  </td>
+                  <td>
+                    <input type="text" value="<%= details.genero %>" name="genero" required/>
+                  </td>
+                  <td>
+                    <input type="text" value="<%= details.idioma %>" name="idioma" required/>
+                  </td>
+                  <td>
+                    <input type="text" value="<%= details.ano %>" name="ano" maxlength="4"/>
+                  </td>
+                  <td>
+                    <input type="text" value="<%= details.qtd %>" name="qtd" required/>
+                  </td>
+                </form>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <a href="/show-livros" class="btn btn-primary">Voltar</a>
+        &nbsp;
+        <input type="submit" class="btn btn-success" value="Confirmar"/>
+      </form>
+    </div>
+  </body>
+</html>
