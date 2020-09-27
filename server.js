@@ -248,8 +248,7 @@ app.route('/deleteEmprestimo/:id').get((req, res) => {
     });
 });
 
-// Livro
-
+// Livros
 app.get('/livros', (req, res) => {
     res.render('index-livros.ejs');
 });
@@ -280,9 +279,7 @@ app.route('/edit-livros/:id').get((req, res) => {
          if(err) return res.send(err)
           res.render('edit-livros.ejs', { livros: result });
     });
-  })
-
-.post((req, res) => {
+}).post((req, res) => {
     let id = req.params.id
     let titulo = req.body.titulo
     let subtitulo = req.body.subtitulo
@@ -293,7 +290,6 @@ app.route('/edit-livros/:id').get((req, res) => {
     let idioma = req.body.idioma
     let ano = req.body.ano
     let qtd = req.body.qtd
-
 
     db.collection('livros').updateOne({_id: ObjectId(id)}, {
         $set: {
@@ -314,8 +310,7 @@ app.route('/edit-livros/:id').get((req, res) => {
     });
 });
 
-app.route('/delete-livros/:id')
-.get((req, res) => {
+app.route('/delete-livros/:id').get((req, res) => {
     let id = req.params.id
 
     db.collection('livros').deleteOne({_id: ObjectId(id)}, (err, result) => {
