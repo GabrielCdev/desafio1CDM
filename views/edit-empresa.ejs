@@ -15,14 +15,14 @@
     }
 
     h2 {
-      font-size: 25px;
+      margin-left: 550px;
+      font-size: 35px;
       font: bold;
-      text-align: center;
     }
 
-    button#btnVoltar #btnEditar {
+    button{
       position: relative;
-      left: 0%;
+      left: 34%;
       width: 10%;
       padding: 3px ;
       border: 2;
@@ -106,11 +106,11 @@
               <div id="div2" class="row">
                   <div class="col-sm-3">
                     <label>CNPJ:</label>
-                    <input type="text" id="cnpj" value="<%= details.inpCnpj %>" name="inpCnpj">
+                    <input type="text" id="cnpj" maxlength="18" value="<%= details.inpCnpj %>" name="inpCnpj">
                   </div>
                   <div id="div3" class="col-sm-4">
                     <label>Contato:</label>
-                    <input type="text" id="telefone" value="<%= details.InpTel %>" name="InpTel">
+                    <input type="text" id="telefone" maxlength="14" value="<%= details.InpTel %>" name="InpTel">
                   </div>
                   <div class="col-md-5">
                     <label>Email:</label>
@@ -135,36 +135,7 @@
                   <div class="col-md-6">
                     <br>
                     <label>Estado:</label>
-                    <select class="select h-50 w-50" id="estado" value="<%= details.InpEs %>" name="InpEs">
-                      <option value="">Selecionar</option>
-                      <option>AC</option>
-                      <option>AL</option>
-                      <option>AP</option>
-                      <option>AM</option>
-                      <option>BA</option>
-                      <option>CE</option>
-                      <option>DF</option>
-                      <option>ES</option>
-                      <option>GO</option>
-                      <option>MA</option>
-                      <option>MT</option>
-                      <option>MS</option>
-                      <option>MG</option>
-                      <option>PA</option>
-                      <option>PB</option>
-                      <option>PR</option>
-                      <option>PE</option>
-                      <option>PI</option>
-                      <option>RJ</option>
-                      <option>RN</option>
-                      <option>RS</option>
-                      <option>RO</option>
-                      <option>RR</option>
-                      <option>SC</option>
-                      <option>SP</option>
-                      <option>SE</option>
-                      <option>TO</option>
-                    </select>
+                    <input type="text" id="estado" value="<%= details.InpEs %>" name="InpEs">
                   </div>
               </div>  
               <br />
@@ -172,6 +143,7 @@
           </div>
         </div> 
       </div>
+      
       <button id="btnVoltar"><a href="/show-empresa">Voltar</a></button> 
       <button id="btnEditar" type="submit">Editar</button>
     </form> 
