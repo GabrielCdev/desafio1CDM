@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/logo/favicon.ico" />
     <link rel="stylesheet" href="/CSS/Main.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
@@ -21,6 +22,7 @@
                 <div class="row">
                     <div class="py-3 col-sm-8">
                         <h2><b>Editar registro</b></h2>
+                        <% funcionario.forEach(function(details) { %>
                     </div>
                 </div>
             </div>
@@ -42,37 +44,37 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% funcionario.forEach(function(details) { %>
+                           
                                 <form action="/edit-funcionario/<%= details._id %>">
                                     <td>
-                                        <input type="text" value="<% details.filial%>" name="filial">
+                                        <input type="text" value="<%= details.filial%>" name="filial">
                                     </td>
                                     <td>
-                                        <input type="text" value="<% details.nome%>" name="nome">
+                                        <input type="text" value="<%= details.nome%>" name="nome">
                                     </td>
                                     <td>
-                                        <input type="text" value="<% details.sobrenome%>" name="sobrenome">
+                                        <input type="text" value="<%= details.sobrenome%>" name="sobrenome">
                                     </td>
                                     <td>
-                                        <input type="text" value="<% details.cpf%>" name="cpf" onkeyup="MascaraCPF()">
+                                        <input type="text" value="<%= details.cpf%>" name="cpf" onkeyup="MascaraCPF()">
                                     </td>
                                     <td>
-                                        <input type="text" value="<% details.cep%>" name="cep" onkeyup="cepMask()">
+                                        <input type="text" value="<%= details.cep%>" name="cep" onkeyup="cepMask()">
                                     </td>
                                     <td>
-                                        <input type="text" value="<% details.cidade%>" name="cidade">
+                                        <input type="text" value="<%= details.cidade%>" name="cidade">
                                     </td>
                                     <td>
-                                        <input type="text" value="<% details.estado%>" name="estado">
+                                        <input type="text" value="<%= details.estado%>" name="estado">
                                     </td>
                                     <td>
-                                        <input type="text" value="<% details.endereco%>" name="endereco">
+                                        <input type="text" value="<%= details.endereco%>" name="endereco">
                                     </td>
                                     <td>
-                                        <input type="text" value="<% details.funcao%>" name="funcao">
+                                        <input type="text" value="<%= details.funcao%>" name="funcao">
                                     </td>
                                     <td>
-                                        <input type="text" value="<% details.contato%>" name="contato">
+                                        <input type="text" value="<%= details.contato%>" name="contato">
                                     </td>
                                 </form>
                                 <% }) %>

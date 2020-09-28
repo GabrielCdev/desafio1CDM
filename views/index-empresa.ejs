@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="/logo/favicon.ico" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <script src="/js/funcoes.js"></script>
   <title>CRUD Library</title>
@@ -19,7 +20,7 @@
 
 button {
   position: relative;
-  left: 34%;
+  left: 35%;
   width: 10%;
   padding: 3px ;
   border: 2;
@@ -35,7 +36,7 @@ button {
 button:hover {opacity: 1}
 
 h1 {
-  margin-left: 500px;
+  margin-left: 480px;
 }
 
 input{
@@ -60,8 +61,12 @@ div#div4{
   margin-left: 150px;
 }
 
+div#divnav{
+  padding-top: 20px;
+}
+
 footer#Library{
-  margin-right: 170px;
+  margin-right: 140px;
 }
 
   </style>
@@ -70,14 +75,33 @@ footer#Library{
 
 
 <body>
-  <nav class="navbar navbar-expand-lg" style="background-color:rgb(17, 9, 68); border-top-color: #000;">
-    <a class="navbar-brand" href="">
-     <img src="https://scontent-for1-1.xx.fbcdn.net/v/t1.0-9/119769804_3503780869658447_9157142273785200666_n.jpg?_nc_cat=106&_nc_sid=730e14&_nc_ohc=YCK8_4mpRxUAX_Iwt5q&_nc_ht=scontent-for1-1.xx&oh=d9a3620ea2ca32dd81d6fe9bd570d56f&oe=5F88E7ED" width="130" height="100"usemap="#workmap">
-    </a>
-    <map name="workmap">
-      <area shape="rect" coords="-00,-00,130,98" alt="logo" href="http://localhost:3000/show-empresa">
-    </map>
-  </nav>
+
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <ul class="navbar-nav">
+      <a class="navbar-brand" href="">
+        <img src="https://scontent.fssa7-1.fna.fbcdn.net/v/t1.0-9/119769804_3503780869658447_9157142273785200666_n.jpg?_nc_cat=106&_nc_sid=730e14&_nc_ohc=vys3ZUEEECsAX9xpVsx&_nc_ht=scontent.fssa7-1.fna&oh=9490d8133f08873b427c4493f72c01ba&oe=5F98B9ED" width="85" height="80"usemap="#workmap">
+       </a>
+       <map name="workmap">
+         <area shape="rect" coords="-00,-00,130,98" alt="logo" href="http://localhost:3000/show-empresa">
+       </map>
+        <li class="nav-item">
+            <a class="nav-link" href="/cliente">Cadastrar Clientes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/empresa">Cadastrar Empresas</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/emprestimo">Cadastrar Empréstimos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/funcionario">Cadastrar Funcionários</a>
+      </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/livros">Cadastrar Livros</a>
+        </li>
+    </ul>
+</nav>
+
 
 
 <h1>Cadastro de Empresas</h1>
