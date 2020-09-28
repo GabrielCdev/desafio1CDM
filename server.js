@@ -41,7 +41,7 @@ app.get('/cliente', (req, res) => {
 app.get('/show-cliente', (req, res) => {
     db.collection('clientes').find().toArray((err, results) => {
         if (err) return console.log(err);
-        
+
         res.render('show-cliente.ejs', { clientes: results });
     });
 });
@@ -102,7 +102,7 @@ app.route('/delete-cliente/:id').get((req, res) => {
 
     db.collection('clientes').deleteOne({ _id: ObjectId(id) }, (err, result) => {
         if (err) return res.send(500, err);
-        
+
         console.log('Deleted in DB!');
         res.redirect('/show-cliente');
     });
@@ -121,7 +121,7 @@ app.get('/empresa', (req, res) => {
 app.get('/show-empresa', (req, res) => {
     db.collection('empresa').find().toArray((err, results) => {
         if (err) return console.log(err)
-        
+
         res.render('show-empresa.ejs', { empresa: results });
     });
 });
@@ -140,7 +140,7 @@ app.route('/edit-empresa/:id').get((req, res) => {
 
     db.collection('empresa').find(ObjectId(id)).toArray((err, result) => {
         if (err) return res.send(err)
-        
+
         res.render('edit-empresa.ejs', { empresa: result });
     });
 }).post((req, res) => {
@@ -167,7 +167,7 @@ app.route('/edit-empresa/:id').get((req, res) => {
         },
     }, (err, result) => {
         if (err) return res.send(err)
-            
+
         res.redirect('/show-empresa');
         console.log('Atualizado no Banco de Dados');
     });
@@ -178,7 +178,7 @@ app.route('/delete-empresa/:id').get((req, res) => {
 
     db.collection('empresa').deleteOne({ _id: ObjectId(id) }, (err, result) => {
         if (err) return res.send(500, err)
-        
+
         console.log('Deletado do Banco de Dados!');
         res.redirect('/show-empresa');
     });
@@ -193,7 +193,7 @@ app.get('/emprestimo', (req, res) => {
 app.get('/showEmprestimo', (req, res) => {
     db.collection('emprestimo_devolucao').find().toArray((err, results) => {
         if (err) return console.log(err);
-        
+
         res.render('showEmprestimo.ejs', { data: results });
     });
 });
@@ -201,7 +201,7 @@ app.get('/showEmprestimo', (req, res) => {
 app.post('/showEmprestimo', (req, res) => {
     db.collection('emprestimo_devolucao').save(req.body, (err, result) => {
         if (err) return console.log(err);
-        
+
         console.log('Salvo no Banco de Dados');
         res.redirect('/showEmprestimo');
     });
@@ -212,7 +212,7 @@ app.route('/editEmprestimo/:id').get((req, res) => {
 
     db.collection('emprestimo_devolucao').find(ObjectId(id)).toArray((err, result) => {
         if (err) return res.send(err);
-        
+
         res.render('editEmprestimo.ejs', { data: result });
     });
 }).post((req, res) => {
@@ -241,7 +241,7 @@ app.route('/editEmprestimo/:id').get((req, res) => {
         }
     }, (err, result) => {
         if (err) return res.send(err);
-        
+
         res.redirect('/showEmprestimo');
         console.log('Atualizado no Banco de Dados');
     });
@@ -252,7 +252,7 @@ app.route('/deleteEmprestimo/:id').get((req, res) => {
 
     db.collection('emprestimo_devolucao').deleteOne({ _id: ObjectId(id) }, (err, result) => {
         if (err) return res.send(500, err);
-        
+
         console.log('Deletado do Banco de Dados!');
         res.redirect('/showEmprestimo');
     });
@@ -271,7 +271,7 @@ app.get('/livros', (req, res) => {
 app.get('/show-livros', (req, res) => {
     db.collection('livros').find().toArray((err, results) => {
         if (err) return console.log(err);
-       
+
         res.render('show-livros.ejs', { livros: results });
     });
 });
@@ -279,7 +279,7 @@ app.get('/show-livros', (req, res) => {
 app.post('/show-livros', (req, res) => {
     db.collection('livros').save(req.body, (err, result) => {
         if (err) return console.log(err);
-       
+
         console.log('Salvo no Banco de Dados');
         res.redirect('/show-livros');
     });
@@ -287,10 +287,10 @@ app.post('/show-livros', (req, res) => {
 
 app.route('/edit-livros/:id').get((req, res) => {
     let id = req.params.id;
-  
+
     db.collection('livros').find(ObjectId(id)).toArray((err, result) => {
-        if(err) return res.send(err)
-        
+        if (err) return res.send(err)
+
         res.render('edit-livros.ejs', { livros: result });
     });
 }).post((req, res) => {
@@ -305,21 +305,21 @@ app.route('/edit-livros/:id').get((req, res) => {
     let ano = req.body.ano
     let qtd = req.body.qtd
 
-    db.collection('livros').updateOne({_id: ObjectId(id)}, {
+    db.collection('livros').updateOne({ _id: ObjectId(id) }, {
         $set: {
             titulo: titulo,
             subtitulo: subtitulo,
-            autor : autor,
-            edicao : edicao,
-            editora : editora,
-            genero : genero,
-            idioma : idioma,
-            ano : ano,
-            qtd : qtd
+            autor: autor,
+            edicao: edicao,
+            editora: editora,
+            genero: genero,
+            idioma: idioma,
+            ano: ano,
+            qtd: qtd
         }
     }, (err, result) => {
         if (err) return res.send(err);
-        
+
         res.redirect('/show-livros');
         console.log('Atualizado no Banco de Dados');
     });
@@ -328,10 +328,90 @@ app.route('/edit-livros/:id').get((req, res) => {
 app.route('/delete-livros/:id').get((req, res) => {
     let id = req.params.id
 
-    db.collection('livros').deleteOne({_id: ObjectId(id)}, (err, result) => {
-        if (err) return res.send (500, err);
-        
+    db.collection('livros').deleteOne({ _id: ObjectId(id) }, (err, result) => {
+        if (err) return res.send(500, err);
+
         console.log('Deletado do Banco de Dados!');
         res.redirect('/show-livros');
     });
 });
+
+
+//Funcionario
+app.get('/funcionario', (req, res) => {
+    res.render('index-funcionario.ejs');
+});
+
+app.get('/funcionario', (req, res) => {
+    let cursor = db.collection('funcionario').find();
+
+});
+
+app.get('/show-funcionario', (req, res) => {
+    db.collection('funcionario').find().toArray((err, results) => {
+        if (err) return console.log(err)
+        res.render('show-funcionario.ejs', { funcionario: results })
+
+    })
+})
+
+app.post('/show-funcionario', (req, res) => {
+    db.collection('funcionario').save(req.body, (err, result) => {
+        if (err) return console.log(err)
+
+        console.log('Salvo no Banco de Dados')
+        res.redirect('/show-funcionario')
+    })
+});
+
+app.route('/edit-funcionario/:id')
+    .get((req, res) => {
+        let id = req.params.id
+
+        db.collection('funcionario').find(ObjectId(id)).toArray((err, result) => {
+            if (err) return res.send(err)
+            res.render('edit-funcionario.ejs', { funcionario: result })
+        })
+    })
+    .post((req, res) => {
+        let id = req.params.id
+        let filial = req.body.filial
+        let nome = req.body.nome
+        let sobrenome = req.body.sobrenome
+        let cpf = req.body.cpf
+        let cep = req.body.cep
+        let cidade = req.body.cidade
+        let estado = req.body.estado
+        let endereco = req.body.endereco
+        let funcao = req.body.funcao
+        let contato = req.body.contato
+
+        db.collection('funcionario').updateOne({ _id: ObjectID(id) }, {
+            $set: {
+                filial: filial,
+                nome: nome,
+                sobrenome: sobrenome,
+                cpf: cpf,
+                cep: cep,
+                cidade: cidade,
+                estado: estado,
+                endereco: endereco,
+                funcao: funcao,
+                contato: contato
+            }
+        }, (err, result) => {
+            if (err) return res.send(err)
+            res.redirect('/show-funcionario')
+            console.log('atualizado no banco de dados')
+        })
+    })
+app.route('/delete/:id')
+    .get((req, res) => {
+        let id = req.params.id
+
+        db.collection('funcionario').deleteOne({ _id: ObjectId(id) }, (err, result) => {
+            if (err) return res.send(500, err)
+            console.log('Deletando do banco de dados!')
+            res.redirect('/show-funcionario')
+        })
+    })

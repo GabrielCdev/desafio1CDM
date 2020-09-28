@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="/docs/4.5/examples/checkout/">
+    <link rel="stylesheet" href="/CSS/Main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="/JS/Main.js"></script>
+    <title>CRUDNode</title>
+</head>
+
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Cadastro de Clientes</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Cadastro de funcionários</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Número 3</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="$"> numero 4</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="$"> numero 5</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="py-5 text-center">
+            <h2>Cadastro de Funcionário</h2>
+        </div>
+
+        <form action="/show-funcionario" method="POST">
+            <div class="col-md-12 order-md-1">
+                <h4 class=" mb-4">Dados do funcionário</h4>
+                <form class="dados-pessoais" novalidate>
+                    <div class="row">
+                        <div class="col-md-5 mb-3">
+                            <label for="primeiroNome">Nome</label>
+                            <input type="text" class="form-control" id="nome" name="nome" required>
+
+                            <div class="invalid-feedback">
+                                Parametro obrigatório
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="lastName">Sobrenome</label>
+                            <input type="text" class="form-control" name="sobrenome" value="" required>
+
+                            <div class="invalid-feedback">
+                                Parametro obrigatório
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="mb-3 mx-4 w-25">
+                            <label for="cpf">Cpf</label>
+                            <input type="text" class="form-control" id="cpf" placeholder="" name="cpf" maxlength="14" onkeyup="MascaraCPF()" required>
+                            <div class="invalid-feedback">
+                                Preencha este campo
+                            </div>
+                        </div>
+
+
+                        <div class="mb-3 mx-4 w-25">
+                            <label for="cep">Cep</label>
+                            <input type="text" class="form-control" id="cep" placeholder="" name="cep" maxlength="10" onkeyup="cepMask()" required>
+
+                            <div class="invalid-feedback">
+                                Preencha este campo
+                            </div>
+                        </div>
+
+                        <div class="mb-3 mx-4 w-25">
+                            <label for="cidade">Cidade</label>
+                            <input type="text" class="form-control" name="cidade" required>
+                            <div class="invalid-feedback">
+                                Preencha este campo
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <label for="cep">Estado</label>
+                                <input type="text" class="form-control" name="estado" required>
+                                <div class="invalid-feedback">
+                                    Preencha este campo
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label for="endereco">Endereco</label>
+                                <input type="text" class="form-control" name="endereco" placeholder="" required>
+
+                                <div class="invalid-feedback">
+                                    Preencha este campo
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label for="funcao">Função</label>
+                                <input type="text" class="form-control" name="funcao" placeholder="EX: Gestor do RH" required>
+
+                                <div class="invalid-feedback">
+                                    Preencha este campo
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                <div class="row">
+                                    <div class="mb-3 mx-1 w-50">
+                                        <label for="contato2" class=" text-center">Contato</label>
+                                        <input type="text" class="form-control w-50" id="contato" placeholder="(xx) 99999-9999" name="contato" maxlength="14" required>
+                                    </div>
+                                    <div class="mb-3 mx-3 w-25">
+                                        <label for="email">Filial</label>
+                                        <input type="text" class="form-control w-50" name="filial" placeholder=" EX: Pituba" required>
+
+                                        <div class="invalid-feedback">
+                                            Preencha este campo
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="mb-3">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Enviar</button>
+                    </div>
+                </form>
+            </div>
+            <footer class="my-5 pt-5 text-muted text-center text-small">
+                <p class="mb-1">&copy; 2020-2020 Biblioteca UNIFACS</p>
+            </footer>
+
+
+</body>
+
+</html>
