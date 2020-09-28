@@ -24,6 +24,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('view engine', 'ejs');
 
+app.get('/', (req, res) => {
+    res.redirect('localhost:3000/cliente');
+});
+
+
 // Cliente
 app.get('/cliente', (req, res) => {
     res.render('index-cliente.ejs');
@@ -36,6 +41,7 @@ app.get('/cliente', (req, res) => {
 app.get('/show-cliente', (req, res) => {
     db.collection('clientes').find().toArray((err, results) => {
         if (err) return console.log(err);
+        
         res.render('show-cliente.ejs', { clientes: results });
     });
 });
@@ -96,6 +102,7 @@ app.route('/delete-cliente/:id').get((req, res) => {
 
     db.collection('clientes').deleteOne({ _id: ObjectId(id) }, (err, result) => {
         if (err) return res.send(500, err);
+        
         console.log('Deleted in DB!');
         res.redirect('/show-cliente');
     });
@@ -114,8 +121,8 @@ app.get('/empresa', (req, res) => {
 app.get('/show-empresa', (req, res) => {
     db.collection('empresa').find().toArray((err, results) => {
         if (err) return console.log(err)
+        
         res.render('show-empresa.ejs', { empresa: results });
-
     });
 });
 
@@ -133,12 +140,10 @@ app.route('/edit-empresa/:id').get((req, res) => {
 
     db.collection('empresa').find(ObjectId(id)).toArray((err, result) => {
         if (err) return res.send(err)
+        
         res.render('edit-empresa.ejs', { empresa: result });
     });
-})
-
-
-.post((req, res) => {
+}).post((req, res) => {
     let id = req.params.id;
     let Inpname = req.body.Inpname;
     let InpFantasia = req.body.InpFantasia;
@@ -150,23 +155,22 @@ app.route('/edit-empresa/:id').get((req, res) => {
     let InpEs = req.body.InpEs;
 
     db.collection('empresa').updateOne({ _id: ObjectId(id) }, {
-            $set: {
-                Inpname: Inpname,
-                InpFantasia: InpFantasia,
-                inpCnpj: inpCnpj,
-                InpEmail: InpEmail,
-                InpTel: InpTel,
-                InpEnd: InpEnd,
-                InpCity: InpCity,
-                InpEs: InpEs
-
-            },
+        $set: {
+            Inpname: Inpname,
+            InpFantasia: InpFantasia,
+            inpCnpj: inpCnpj,
+            InpEmail: InpEmail,
+            InpTel: InpTel,
+            InpEnd: InpEnd,
+            InpCity: InpCity,
+            InpEs: InpEs
         },
-        (err, result) => {
-            if (err) return res.send(err)
-            res.redirect('/show-empresa');
-            console.log('Atualizado no Banco de Dados');
-        });
+    }, (err, result) => {
+        if (err) return res.send(err)
+            
+        res.redirect('/show-empresa');
+        console.log('Atualizado no Banco de Dados');
+    });
 })
 
 app.route('/delete-empresa/:id').get((req, res) => {
@@ -174,6 +178,7 @@ app.route('/delete-empresa/:id').get((req, res) => {
 
     db.collection('empresa').deleteOne({ _id: ObjectId(id) }, (err, result) => {
         if (err) return res.send(500, err)
+        
         console.log('Deletado do Banco de Dados!');
         res.redirect('/show-empresa');
     });
@@ -188,6 +193,7 @@ app.get('/emprestimo', (req, res) => {
 app.get('/showEmprestimo', (req, res) => {
     db.collection('emprestimo_devolucao').find().toArray((err, results) => {
         if (err) return console.log(err);
+        
         res.render('showEmprestimo.ejs', { data: results });
     });
 });
@@ -195,6 +201,7 @@ app.get('/showEmprestimo', (req, res) => {
 app.post('/showEmprestimo', (req, res) => {
     db.collection('emprestimo_devolucao').save(req.body, (err, result) => {
         if (err) return console.log(err);
+        
         console.log('Salvo no Banco de Dados');
         res.redirect('/showEmprestimo');
     });
@@ -205,6 +212,7 @@ app.route('/editEmprestimo/:id').get((req, res) => {
 
     db.collection('emprestimo_devolucao').find(ObjectId(id)).toArray((err, result) => {
         if (err) return res.send(err);
+        
         res.render('editEmprestimo.ejs', { data: result });
     });
 }).post((req, res) => {
@@ -233,6 +241,7 @@ app.route('/editEmprestimo/:id').get((req, res) => {
         }
     }, (err, result) => {
         if (err) return res.send(err);
+        
         res.redirect('/showEmprestimo');
         console.log('Atualizado no Banco de Dados');
     });
@@ -243,10 +252,12 @@ app.route('/deleteEmprestimo/:id').get((req, res) => {
 
     db.collection('emprestimo_devolucao').deleteOne({ _id: ObjectId(id) }, (err, result) => {
         if (err) return res.send(500, err);
+        
         console.log('Deletado do Banco de Dados!');
         res.redirect('/showEmprestimo');
     });
 });
+
 
 // Livros
 app.get('/livros', (req, res) => {
@@ -260,6 +271,7 @@ app.get('/livros', (req, res) => {
 app.get('/show-livros', (req, res) => {
     db.collection('livros').find().toArray((err, results) => {
         if (err) return console.log(err);
+       
         res.render('show-livros.ejs', { livros: results });
     });
 });
@@ -267,6 +279,7 @@ app.get('/show-livros', (req, res) => {
 app.post('/show-livros', (req, res) => {
     db.collection('livros').save(req.body, (err, result) => {
         if (err) return console.log(err);
+       
         console.log('Salvo no Banco de Dados');
         res.redirect('/show-livros');
     });
@@ -276,8 +289,9 @@ app.route('/edit-livros/:id').get((req, res) => {
     let id = req.params.id;
   
     db.collection('livros').find(ObjectId(id)).toArray((err, result) => {
-         if(err) return res.send(err)
-          res.render('edit-livros.ejs', { livros: result });
+        if(err) return res.send(err)
+        
+        res.render('edit-livros.ejs', { livros: result });
     });
 }).post((req, res) => {
     let id = req.params.id
@@ -305,6 +319,7 @@ app.route('/edit-livros/:id').get((req, res) => {
         }
     }, (err, result) => {
         if (err) return res.send(err);
+        
         res.redirect('/show-livros');
         console.log('Atualizado no Banco de Dados');
     });
@@ -315,6 +330,7 @@ app.route('/delete-livros/:id').get((req, res) => {
 
     db.collection('livros').deleteOne({_id: ObjectId(id)}, (err, result) => {
         if (err) return res.send (500, err);
+        
         console.log('Deletado do Banco de Dados!');
         res.redirect('/show-livros');
     });
