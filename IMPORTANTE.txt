@@ -1,0 +1,1 @@
+O botão "HOME" (1º da esquerda) da NavBar leva as respectivas telas SHOW, sem precisar de inserções.
