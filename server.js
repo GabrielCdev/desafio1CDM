@@ -190,7 +190,7 @@ app.get('/emprestimo', (req, res) => {
     res.render('indexEmprestimo.ejs');
 });
 
-app.get('/showEmprestimo', (req, res) => {
+app.get('/show-emprestimo', (req, res) => {
     db.collection('emprestimo_devolucao').find().toArray((err, results) => {
         if (err) return console.log(err);
 
@@ -198,7 +198,7 @@ app.get('/showEmprestimo', (req, res) => {
     });
 });
 
-app.post('/showEmprestimo', (req, res) => {
+app.post('/show-emprestimo', (req, res) => {
     db.collection('emprestimo_devolucao').save(req.body, (err, result) => {
         if (err) return console.log(err);
 
@@ -207,7 +207,7 @@ app.post('/showEmprestimo', (req, res) => {
     });
 });
 
-app.route('/editEmprestimo/:id').get((req, res) => {
+app.route('/edit-emprestimo/:id').get((req, res) => {
     let id = req.params.id
 
     db.collection('emprestimo_devolucao').find(ObjectId(id)).toArray((err, result) => {
@@ -247,7 +247,7 @@ app.route('/editEmprestimo/:id').get((req, res) => {
     });
 });
 
-app.route('/deleteEmprestimo/:id').get((req, res) => {
+app.route('/delete-emprestimo/:id').get((req, res) => {
     let id = req.params.id
 
     db.collection('emprestimo_devolucao').deleteOne({ _id: ObjectId(id) }, (err, result) => {
@@ -405,7 +405,7 @@ app.route('/edit-funcionario/:id').get((req, res) => {
     })
 })
 
-app.route('/delete/:id').get((req, res) => {
+app.route('/delete-funcionario/:id').get((req, res) => {
     let id = req.params.id
 
     db.collection('funcionario').deleteOne({ _id: ObjectId(id) }, (err, result) => {

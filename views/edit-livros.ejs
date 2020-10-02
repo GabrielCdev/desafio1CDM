@@ -23,6 +23,7 @@
             </div>
           </div>
         </div>
+
         <div class="table-responsive">
           <div class="table-wrapper">
             <table class="table table-striped table-hover table-bordered" id="myTable">
@@ -42,35 +43,35 @@
 
               <tbody>
                 <% livros.forEach(function(details) { %>
-                <form action="/edit-funcionario/<%= details._id %>">
-                  <td>
-                    <input type="text" value="<%= details.titulo %>" name="titulo" required/>
-                  </td>
-                  <td>
-                    <input type="text" value="<%= details.subtitulo %>" name="subtitulo"/>
-                  </td>
-                  <td>
-                    <input type="text" value="<%= details.autor %>" name="autor" required/>
-                  </td>
-                  <td>
-                    <input type="text" value="<%= details.edicao %>" name="edicao" maxlength="10" required/>
-                  </td>
-                  <td>
-                    <input type="text" value="<%= details.editora %>" name="editora" required/>
-                  </td>
-                  <td>
-                    <input type="text" value="<%= details.genero %>" name="genero" required/>
-                  </td>
-                  <td>
-                    <input type="text" value="<%= details.idioma %>" name="idioma" required/>
-                  </td>
-                  <td>
-                    <input type="text" value="<%= details.ano %>" name="ano" maxlength="4"/>
-                  </td>
-                  <td>
-                    <input type="text" value="<%= details.qtd %>" name="qtd" required/>
-                  </td>
-                </form>
+                  <form action="/edit-funcionario/<%= details._id %>">
+                    <td>
+                      <input type="text" value="<%= details.titulo %>" name="titulo" required/>
+                    </td>
+                    <td>
+                      <input type="text" value="<%= details.subtitulo %>" name="subtitulo"/>
+                    </td>
+                    <td>
+                      <input type="text" value="<%= details.autor %>" name="autor" required/>
+                    </td>
+                    <td>
+                      <input type="text" value="<%= details.edicao %>" name="edicao" maxlength="10" required/>
+                    </td>
+                    <td>
+                      <input type="text" value="<%= details.editora %>" name="editora" required/>
+                    </td>
+                    <td>
+                      <input type="text" value="<%= details.genero %>" name="genero" required/>
+                    </td>
+                    <td>
+                      <input type="text" value="<%= details.idioma %>" name="idioma" required/>
+                    </td>
+                    <td>
+                      <input type="text" value="<%= details.ano %>" name="ano" maxlength="4"/>
+                    </td>
+                    <td>
+                      <input type="text" value="<%= details.qtd %>" name="qtd" required/>
+                    </td>
+                  </form>
                 <% }) %>
               </tbody>
             </table>

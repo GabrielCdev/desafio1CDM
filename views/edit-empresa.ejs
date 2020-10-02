@@ -1,154 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <link rel="shortcut icon" href="/logo/favicon.ico" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <title>CRUD Library</title>
-  <style>
-    body {
-      font-size: 20px;
-      padding: 0;
-      height: 200%;
-      width: 100%;
-      overflow: auto;
-      background-color: cornsilk;
-    }
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/logo/favicon.ico" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/editEmpresa.css"/>
+    <title>CRUD Library</title>
+  </head>
 
-    h2 {
-      margin-left: 550px;
-      font-size: 35px;
-      font: bold;
-    }
-
-    button{
-      position: relative;
-      left: 34%;
-      width: 10%;
-      padding: 3px ;
-      border: 2;
-      text-align: center;
-      margin: 4px 2px;
-      opacity: 0.6;
-      transition: 0.3s;
-      display: inline-block;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    button:hover {
-      opacity: 1;
-    }
-
-    input#telefone{
-      width: 260px;
-    }
-
-    input#cnpj{
-      width: 240px;
-    }
-
-    input#nome{
-      width: 400px;
-    }
-
-    input#fantasia{
-      width: 400px;
-    }
-
-    input#cidade{
-      width: 300px;
-    }
-
-    input#estado{
-      width: 100px;
-    }
-
-    input#endereco{
-      width: 950px;
-    }
-
-    input#email{
-      width: 450px;
-    }
-  </style>
-</head>
-
-<body>
-  <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-    <ul class="navbar-nav">
+  <body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
       <a class="navbar-brand" href="">
         <img src="https://scontent.fssa7-1.fna.fbcdn.net/v/t1.0-9/119769804_3503780869658447_9157142273785200666_n.jpg?_nc_cat=106&_nc_sid=730e14&_nc_ohc=vys3ZUEEECsAX9xpVsx&_nc_ht=scontent.fssa7-1.fna&oh=9490d8133f08873b427c4493f72c01ba&oe=5F98B9ED" width="85" height="80"usemap="#workmap">
-       </a>
-       <map name="workmap">
-         <area shape="rect" coords="-00,-00,130,98" alt="logo" href="http://localhost:3000/show-empresa">
-       </map>
-</nav>
+      </a>
+      <map name="workmap">
+        <area shape="rect" coords="-00,-00,130,98" alt="logo" href="http://localhost:3000/show-empresa">
+      </map>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/cliente">Cadastrar Clientes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/empresa">Cadastrar Empresas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/emprestimo">Cadastrar Empréstimos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/funcionario">Cadastrar Funcionários</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/livros">Cadastrar Livros</a>
+        </li>
+      </ul>
+    </nav>
 
-  <div class="container pt-3"></div>
+    <div class="container pt-3"></div>
+    <h2>Editar Registro</h2>
+    <% empresa.forEach(function(details) { %>
+      <form action="/edit-empresa/<%= details._id %>" method="POST">
+        <div class="container-fluid">
+          <div class="jumbotron jumbotron-fluid">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-5">
+                  <label>Nome:</label>
+                  <input type="text" id="nome" value="<%= details.Inpname %>" name="Inpname">
+                </div>    
 
-  <h2>Editar Registro</h2>
-  <% empresa.forEach(function(details) { %>
-    <form action="/edit-empresa/<%= details._id %>" method="POST">
-      <div class="container-fluid">
-        <div class="jumbotron jumbotron-fluid">
-          <div class="container-fluid">
-              <div class="row">
-                  <div class="col-sm-5">
-                    <label>Nome:</label>
-                    <input type="text" id="nome" value="<%= details.Inpname %>" name="Inpname">
-                  </div>    
-                  <div class="col-sm-7">
-                     <label>Nome fantasia:</label>
-                     <input type="text" id="fantasia" value="<%= details.InpFantasia %>" name="InpFantasia">
-                  </div>
-              </div>
-              
-              <br>
-              <div id="div2" class="row">
-                  <div class="col-sm-3">
-                    <label>CNPJ:</label>
-                    <input type="text" id="cnpj" maxlength="18" value="<%= details.inpCnpj %>" name="inpCnpj">
-                  </div>
-                  <div id="div3" class="col-sm-4">
-                    <label>Contato:</label>
-                    <input type="text" id="telefone" maxlength="14" value="<%= details.InpTel %>" name="InpTel">
-                  </div>
-                  <div class="col-md-5">
-                    <label>Email:</label>
-                    <input type="text" id="email" value="<%= details.InpEmail %>" name="InpEmail">
-                  </div>
-              </div>
-              <br>
-      
-              <div class="row">
-                <div class="col-sm-10">
-                  <label>Endereço:</label>
-                  <input type="text" id="endereco" value="<%= details.InpEnd %>" name="InpEnd">
+                <div class="col-sm-7">
+                  <label>Nome fantasia:</label>
+                  <input type="text" id="fantasia" value="<%= details.InpFantasia %>" name="InpFantasia">
                 </div>
+              </div>
             </div>
-              
-              <div id="div4" class="row">
-                  <div class="col-sm-4">
-                    <br>
-                    <label>Cidade:</label>
-                    <input type="text" id="cidade" value="<%= details.InpCity %>" name="InpCity">
-                  </div>
-                  <div class="col-md-6">
-                    <br>
-                    <label>Estado:</label>
-                    <input type="text" id="estado" value="<%= details.InpEs %>" name="InpEs">
-                  </div>
-              </div>  
-              <br />
-            </div>     
-          </div>
-        </div> 
-      </div>
-      
-      <button id="btnVoltar"><a href="/show-empresa">Voltar</a></button> 
-      <button id="btnEditar" type="submit">Editar</button>
-    </form> 
-  <% }) %>
-</body>
+
+            <br>
+            <div id="div2" class="row">
+              <div class="col-sm-3">
+                <label>CNPJ:</label>
+                <input type="text" id="cnpj" maxlength="18" value="<%= details.inpCnpj %>" name="inpCnpj">
+              </div>
+
+              <div id="div3" class="col-sm-4">
+                <label>Contato:</label>
+                <input type="text" id="telefone" maxlength="14" value="<%= details.InpTel %>" name="InpTel">
+              </div>
+
+              <div class="col-md-5">
+                <label>Email:</label>
+                <input type="text" id="email" value="<%= details.InpEmail %>" name="InpEmail">
+              </div>
+            </div>
+
+            <br>
+            <div class="row">
+              <div class="col-sm-10">
+                <label>Endereço:</label>
+                <input type="text" id="endereco" value="<%= details.InpEnd %>" name="InpEnd">
+              </div>
+            </div>
+
+            <div id="div4" class="row">
+              <div class="col-sm-4">
+                <br>
+                <label>Cidade:</label>
+                <input type="text" id="cidade" value="<%= details.InpCity %>" name="InpCity">
+              </div>
+            
+              <div class="col-md-6">
+                <br>
+                <label>Estado:</label>
+                <input type="text" id="estado" value="<%= details.InpEs %>" name="InpEs">
+              </div>
+            </div>  
+            <br />
+          </div>     
+        </div>
+      </form> 
+    <% }) %>
+    <button id="btnVoltar"><a href="/show-empresa">Voltar</a></button> 
+    <button id="btnEditar" type="submit">Editar</button>
+  </body>
 </html>

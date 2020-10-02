@@ -1,0 +1,65 @@
+body {
+    padding: 0;
+    font-size: 20px;
+    height: 200%;
+    width: 100%;
+    overflow: auto;
+    background-color: cornsilk;
+}
+
+h2 {
+    margin-left: 550px;
+    font-size: 35px;
+    font: bold;
+}
+
+button {
+    position: relative;
+    left: 34%;
+    width: 10%;
+    padding: 3px ;
+    border: 2;
+    text-align: center;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 1;
+}
+
+input#telefone {
+    width: 260px;
+}
+
+input#cnpj {
+    width: 240px;
+}
+
+input#nome {
+    width: 400px;
+}
+
+input#fantasia {
+    width: 400px;
+}
+
+input#cidade {
+    width: 300px;
+}
+
+input#estado {
+    width: 100px;
+}
+
+input#endereco {
+    width: 950px;
+}
+
+input#email {
+    width: 450px;
+}
