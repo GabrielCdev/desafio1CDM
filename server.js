@@ -194,7 +194,7 @@ app.get('/show-emprestimo', (req, res) => {
     db.collection('emprestimo_devolucao').find().toArray((err, results) => {
         if (err) return console.log(err);
 
-        res.render('showEmprestimo.ejs', { data: results });
+        res.render('show-emprestimo.ejs', { emprestimo_devolucao: results });
     });
 });
 
@@ -203,7 +203,7 @@ app.post('/show-emprestimo', (req, res) => {
         if (err) return console.log(err);
 
         console.log('Salvo no Banco de Dados');
-        res.redirect('/showEmprestimo');
+        res.redirect('/show-emprestimo');
     });
 });
 
@@ -213,7 +213,7 @@ app.route('/edit-emprestimo/:id').get((req, res) => {
     db.collection('emprestimo_devolucao').find(ObjectId(id)).toArray((err, result) => {
         if (err) return res.send(err);
 
-        res.render('editEmprestimo.ejs', { data: result });
+        res.render('edit-emprestimo.ejs', { emprestimo_devolucao: result });
     });
 }).post((req, res) => {
     let id = req.params.id
@@ -242,7 +242,7 @@ app.route('/edit-emprestimo/:id').get((req, res) => {
     }, (err, result) => {
         if (err) return res.send(err);
 
-        res.redirect('/showEmprestimo');
+        res.redirect('/show-emprestimo');
         console.log('Atualizado no Banco de Dados');
     });
 });
@@ -254,7 +254,7 @@ app.route('/delete-emprestimo/:id').get((req, res) => {
         if (err) return res.send(500, err);
 
         console.log('Deletado do Banco de Dados!');
-        res.redirect('/showEmprestimo');
+        res.redirect('/show-emprestimo');
     });
 });
 

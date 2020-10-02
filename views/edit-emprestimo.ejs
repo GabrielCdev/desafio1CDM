@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Editar</title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+        <link rel="shortcut icon" href="/logo/favicon.ico" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/indexEmprestimo.css" />
+        <link rel="shortcut icon" href="/logo/favicon.ico" />
+        <link rel="stylesheet" href="/css/editEmprestimo.css"/>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <a class="navbar-brand" href="">
+                <img src="https://scontent.fssa7-1.fna.fbcdn.net/v/t1.0-9/119769804_3503780869658447_9157142273785200666_n.jpg?_nc_cat=106&_nc_sid=730e14&_nc_ohc=vys3ZUEEECsAX9xpVsx&_nc_ht=scontent.fssa7-1.fna&oh=9490d8133f08873b427c4493f72c01ba&oe=5F98B9ED" width="65" height="65" usemap="#workmap">
+            </a>
+            <map name="workmap">
+                <area shape="rect" coords="-00,-00,130,98" alt="logo" href="http://localhost:3000/show-emprestimo">
+            </map>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/cliente">Cadastrar Clientes</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/empresa">Cadastrar Empresas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/emprestimo">Cadastrar Empréstimos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/funcionario">Cadastrar Funcionários</a>
+              </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/livros">Cadastrar Livros</a>
+                </li>
+            </ul>
+        </nav>
+        <h2>Editar informações do Cliente </h2>
+        <% emprestimo_devolucao.forEach(function(details) { %>
+            <form action="/edit-emprestimo/<%= details._id %>" method="POST">
+                <h3>Nome</h3>
+                <input type="text" value="<%= details.name %>" name="name">
+                <h3>Sobrenome</h3>
+                <input type="text" value="<%= details.surname %>" name="surname">
+                <h3>CPF</h3>
+                <input type="text" value="<%= details.cpf %>" name="cpf" maxlength="11">
+                <h3>Telefone</h3>
+                <input type="text" value="<%= details.telefone %>" name="telefone" maxlength="11">
+                <h3>Endereço</h3>
+                <input type="text" value="<%= details.endereco %>" name="endereco">
+                <h3>Data de Empréstimo</h3>
+                <input type="text" value="<%= details.data %>" name="data" maxlength="10">
+                <h3>Data de devolução</h3>
+                <input type="text" value="<%= details.data2 %>" name="data2" maxlength="10">
+                <h3>Livro Emprestado</h3>
+                <input type="text" value="<%= details.livroEmprestado %>" name="livroEmprestado">
+                <h3>Multa</h3>
+                <input type="text" value="<%= details.multa %>" name="multa" maxlength="6">
+                <br>
+                <button><a href="/show-emprestimo">Voltar</a></button>
+                <button type="submit">Editar</button>
+            </form>
+        <% }) %>
+    </body>
+</html>

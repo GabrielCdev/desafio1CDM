@@ -63,3 +63,15 @@ input#endereco {
 input#email {
     width: 450px;
 }
+
+div#div2 {
+    margin-left: 2px;
+}
+
+label#lblEnd {
+    margin-left: 15px;
+}
+
+label#lblCid {
+    margin-left: 15px;
+}

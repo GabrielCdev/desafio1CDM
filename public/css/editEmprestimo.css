@@ -160,3 +160,7 @@ table.table td i {
 #menuPrincipal {
     background-color: #e3f2fd;
 }
+
+button#btnNovo{
+    margin-left: 48%;
+}
