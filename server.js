@@ -384,7 +384,7 @@ app.route('/edit-funcionario/:id').get((req, res) => {
     let funcao = req.body.funcao
     let contato = req.body.contato
 
-    db.collection('funcionario').updateOne({ _id: ObjectID(id) }, {
+    db.collection('funcionario').updateOne({ _id: ObjectId(id) }, {
         $set: {
             filial: filial,
             nome: nome,
