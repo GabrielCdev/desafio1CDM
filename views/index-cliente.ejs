@@ -78,14 +78,12 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="contato1">Contato 1</label>
-                                <input type="text" class="form-control" id="contato1" placeholder="(99) 99999-9999"
-                                    name="contato1" maxlength="14" onkeyup="contatoMask()" required>
+                                <input type="text" class="form-control" id="contato1" placeholder="(99) 99999-9999" pattern="[0-9]{10}" name="contato1" maxlength="14" onkeyup="contatoMask()" required>
                             </div>
 
                             <div class="col-md-6 mb-3">
                                 <label for="contato2">Contato 2</label>
-                                <input type="text" class="form-control" id="contato2" placeholder="(99) 99999-9999"
-                                    name="contato2" maxlength="14" onkeyup="contatoMask2()">
+                                <input type="text" class="form-control" id="contato2" placeholder="(99) 99999-9999" pattern="[0-9]{10}" name="contato2" maxlength="14" onkeyup="contatoMask2()">
                             </div>
                         </div>
 
@@ -106,7 +104,7 @@
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="cep">CEP</label>
-                                <input type="text" class="form-control" onkeyup="cepMask()" name="cep" id="cep" placeholder="99.999-999" maxlength="10" required>
+                                <input type="text" class="form-control" onkeyup="cepMask()" name="cep" id="cep" pattern="[0-9]{10}" placeholder="99.999-999" maxlength="10" required>
 
                                 <div class="invalid-feedback">
                                     Insira um CEP válido
