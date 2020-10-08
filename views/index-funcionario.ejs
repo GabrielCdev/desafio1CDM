@@ -71,7 +71,7 @@
                         <div class="row">
                             <div class="mb-3 mx-3 w-25">
                                 <label for="cpf">Cpf</label>
-                                <input type="text" class="form-control" id="cpf" placeholder="" name="cpf" maxlength="14" onkeyup="MascaraCPF()" required>
+                                <input type="text" class="form-control" id="cpf" placeholder="" name="cpf" maxlength="14" pattern="[0-9]{10}" onkeyup="MascaraCPF()" required>
                                 <div class="invalid-feedback">
                                     Preencha este campo
                                 </div>
@@ -80,7 +80,7 @@
 
                             <div class="mb-3 mx-5 w-25">
                                 <label for="cep">Cep</label>
-                                <input type="text" class="form-control" id="cep" placeholder="" name="cep" maxlength="10" onkeyup="cepMask()" required>
+                                <input type="text" class="form-control" id="cep" placeholder="" name="cep" maxlength="10" pattern="[0-9]{10}" onkeyup="cepMask()" required>
                                 <div class="invalid-feedback">
                                     Preencha este campo
                                 </div>
@@ -126,7 +126,7 @@
                                     <div class="row">
                                         <div class="mb-3 mx-0 w-50">
                                             <label for="contato" class=" text-center">Contato</label>
-                                            <input type="text" class="form-control w-50" id="contato" placeholder="(99) 99999-9999" name="contato" maxlength="14" onkeyup="contatoMask()" required>
+                                            <input type="text" class="form-control w-50" id="contato" pattern="[0-9]{10}" placeholder="(99) 99999-9999" name="contato" maxlength="14" onkeyup="contatoMask()" required>
                                         </div>
 
                                         <div class="mb-3 mx-0 w-50">
