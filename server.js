@@ -109,39 +109,39 @@ app.route('/delete-cliente/:id').get((req, res) => {
 });
 
 
-// Empresa
-app.get('/empresa', (req, res) => {
-    res.render('index-empresa.ejs');
+// Filial
+app.get('/filial', (req, res) => {
+    res.render('index-filial.ejs');
 });
 
-app.get('/empresa', (req, res) => {
-    let cursor = db.collection('empresa').find();
+app.get('/filial', (req, res) => {
+    let cursor = db.collection('filial').find();
 });
 
-app.get('/show-empresa', (req, res) => {
-    db.collection('empresa').find().toArray((err, results) => {
+app.get('/show-filial', (req, res) => {
+    db.collection('filial').find().toArray((err, results) => {
         if (err) return console.log(err)
 
-        res.render('show-empresa.ejs', { empresa: results });
+        res.render('show-filial.ejs', { filial: results });
     });
 });
 
-app.post('/show-empresa', (req, res) => {
-    db.collection('empresa').save(req.body, (err, result) => {
+app.post('/show-filial', (req, res) => {
+    db.collection('filial').save(req.body, (err, result) => {
         if (err) return console.log(err);
 
         console.log('salvo no banco de dados');
-        res.redirect('/show-empresa');
+        res.redirect('/show-filial');
     });
 });
 
-app.route('/edit-empresa/:id').get((req, res) => {
+app.route('/edit-filial/:id').get((req, res) => {
     let id = req.params.id;
 
-    db.collection('empresa').find(ObjectId(id)).toArray((err, result) => {
+    db.collection('filial').find(ObjectId(id)).toArray((err, result) => {
         if (err) return res.send(err)
 
-        res.render('edit-empresa.ejs', { empresa: result });
+        res.render('edit-filial.ejs', { filial: result });
     });
 }).post((req, res) => {
     let id = req.params.id;
@@ -154,7 +154,7 @@ app.route('/edit-empresa/:id').get((req, res) => {
     let InpCity = req.body.InpCity;
     let InpEs = req.body.InpEs;
 
-    db.collection('empresa').updateOne({ _id: ObjectId(id) }, {
+    db.collection('filial').updateOne({ _id: ObjectId(id) }, {
         $set: {
             Inpname: Inpname,
             InpFantasia: InpFantasia,
@@ -168,19 +168,19 @@ app.route('/edit-empresa/:id').get((req, res) => {
     }, (err, result) => {
         if (err) return res.send(err)
 
-        res.redirect('/show-empresa');
+        res.redirect('/show-filial');
         console.log('Atualizado no Banco de Dados');
     });
 })
 
-app.route('/delete-empresa/:id').get((req, res) => {
+app.route('/delete-filial/:id').get((req, res) => {
     let id = req.params.id;
 
-    db.collection('empresa').deleteOne({ _id: ObjectId(id) }, (err, result) => {
+    db.collection('filial').deleteOne({ _id: ObjectId(id) }, (err, result) => {
         if (err) return res.send(500, err)
 
         console.log('Deletado do Banco de Dados!');
-        res.redirect('/show-empresa');
+        res.redirect('/show-filial');
     });
 });
 
