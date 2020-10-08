@@ -41,3 +41,13 @@ function myFunction() {
         }
     }
 }
+// Máscara de contato
+function contatoMask() {
+    let contato = document.getElementById('contato');
+    
+    if (contato.value.length === 2) {
+      contato.value += " ";
+    } else if (contato.value.length === 8 || contato.value.length === 9) {
+      contato.value += "-";
+    }
+  }
