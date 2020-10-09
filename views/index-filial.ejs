@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/logo/favicon.ico" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="/js/funcoes.js"></script>
+    <title>CRUD Library</title>
+    <link rel="stylesheet" href="/css/styleFilial.css"/>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+      <a class="navbar-brand" href="">
+        <img src="https://scontent.fssa7-1.fna.fbcdn.net/v/t1.0-9/119769804_3503780869658447_9157142273785200666_n.jpg?_nc_cat=106&_nc_sid=730e14&_nc_ohc=vys3ZUEEECsAX9xpVsx&_nc_ht=scontent.fssa7-1.fna&oh=9490d8133f08873b427c4493f72c01ba&oe=5F98B9ED" width="65" height="65" usemap="#workmap">
+      </a>
+      <map name="workmap">
+        <area shape="rect" coords="-00,-00,130,98" alt="logo" href="http://localhost:3000/show-filial">
+      </map>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/cliente">Cadastrar Clientes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/emprestimo">Cadastrar Empréstimos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/filial">Cadastrar Filiais</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/funcionario">Cadastrar Funcionários</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/livros">Cadastrar Livros</a>
+        </li>
+      </ul>
+    </nav>
+  
+    <h1>Cadastro de Filiais</h1>
+    <form action="/show-filial" method="POST">
+      <div class="container-fluid">
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container-fluid">
+            <div class="row">
+              <div id="div1" class="col-sm-5">
+                <label>Nome:</label>
+                <input type="text" name="Inpname" required>
+              </div>
+              
+              <div class="col-sm-5">
+                <label>Nome fantasia:</label>
+                <input type="text" name="InpFantasia" required>
+              </div>
+            </div>
+
+            <div  class="row">
+              <div id="div2" class="col-sm-5">
+                <br>
+                <label>CNPJ:</label>
+                <input onkeyup="cnpjFunc()" maxlength="18" id="inpCnpj" type="text" name="inpCnpj" required>
+              </div>
+              
+              <div class="col-md-5">
+                <br>
+                <label>Email:</label>
+                <input type="email" name="InpEmail" required>
+              </div>
+            </div>
+
+            <br>
+            
+            <div class="row">
+              <div id="div3" class="col-sm-5">
+                <label>Contato:</label>
+                <input id="contato" maxlength="14" onkeyup="contatoFunc()" type="text" name="InpTel" required>
+              </div>
+              
+              <div class="col-sm-5">
+                <label>Endereço:</label>
+                <input id="input" type="text" name="InpEnd" required>
+              </div>
+            </div>
+
+            <div  class="row">
+              <div id="div4" class="col-sm-5">
+                <br>
+                <label>Estado:</label>
+                <select class="select h-50 w-50" id="estado" name="InpEs">
+                  <option value="">Selecionar</option>
+                  <option>AC</option>
+                  <option>AL</option>
+                  <option>AP</option>
+                  <option>AM</option>
+                  <option>BA</option>
+                  <option>CE</option>
+                  <option>DF</option>
+                  <option>ES</option>
+                  <option>GO</option>
+                  <option>MA</option>
+                  <option>MT</option>
+                  <option>MS</option>
+                  <option>MG</option>
+                  <option>PA</option>
+                  <option>PB</option>
+                  <option>PR</option>
+                  <option>PE</option>
+                  <option>PI</option>
+                  <option>RJ</option>
+                  <option>RN</option>
+                  <option>RS</option>
+                  <option>RO</option>
+                  <option>RR</option>
+                  <option>SC</option>
+                  <option>SP</option>
+                  <option>SE</option>
+                  <option>TO</option>
+                </select>
+              </div>
+              
+              <div class="col-md-5">
+                <br>
+                <label>Cidade:</label>
+                <input id="input" type="text" name="InpCity" required>
+              </div>
+            </div>  
+          </div>
+        </div> 
+      </div>
+      <button type="submit">Cadastrar</button> 
+      <button type="reset">Limpar</button>
+    </form>
+
+    <footer id="Library" class="pt-4 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2020-2020 Biblioteca UNIFACS</p>
+    </footer>
+  </body>
+</html>
