@@ -45,10 +45,13 @@ function myFunction() {
 function contatoMask() {
     let contato = document.getElementById('contato');
     
-    if (contato.value.length === 2) {
-      contato.value += " ";
-    } else if (contato.value.length === 8 || contato.value.length === 9) {
+    let er = /[^0-9-./]/;
+    er.lastIndex = 0;
+ 
+    if (contato.value.length === 7 || contato.value.length === 8) {
       contato.value += "-";
+    } else if (er.test(contato.value)) {
+      contato.value = "";
     }
   }
   /* function maskNum(evt) {
