@@ -5,140 +5,132 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Desafio 1 - CRUD</title>
-    <link rel="stylesheet" href="/css/style.css"/>
     <link rel="shortcut icon" href="/logo/favicon.ico" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <link rel="canonical" href="/docs/4.5/examples/checkout/">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="/js/showscript.js"></script>
   </head>
 
   <body>
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-      <a class="navbar-brand" href="">
-          <img src="https://scontent.fssa7-1.fna.fbcdn.net/v/t1.0-9/119769804_3503780869658447_9157142273785200666_n.jpg?_nc_cat=106&_nc_sid=730e14&_nc_ohc=vys3ZUEEECsAX9xpVsx&_nc_ht=scontent.fssa7-1.fna&oh=9490d8133f08873b427c4493f72c01ba&oe=5F98B9ED" width="65" height="65" usemap="#workmap">
-      </a>
-      <map name="workmap">
-          <area shape="rect" coords="-00,-00,130,98" alt="logo" href="http://localhost:3000/show-cliente">
-      </map>
-      <ul class="navbar-nav">
-          <li class="nav-item">
-              <a class="nav-link" href="/cliente">Cadastrar Clientes</a>
+        <a class="navbar-brand" href="">
+            <img src="https://scontent.fssa7-1.fna.fbcdn.net/v/t1.0-9/119769804_3503780869658447_9157142273785200666_n.jpg?_nc_cat=106&_nc_sid=730e14&_nc_ohc=vys3ZUEEECsAX9xpVsx&_nc_ht=scontent.fssa7-1.fna&oh=9490d8133f08873b427c4493f72c01ba&oe=5F98B9ED" width="65" height="65" usemap="#workmap">
+        </a>
+        <map name="workmap">
+            <area shape="rect" coords="-00,-00,130,98" alt="logo" href="http://localhost:3000/show-cliente">
+        </map>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/cliente">Cadastrar Clientes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/emprestimo">Cadastrar Empréstimos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/filial">Cadastrar Filiais</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/funcionario">Cadastrar Funcionários</a>
           </li>
-          <li class="nav-item">
-              <a class="nav-link" href="/emprestimo">Cadastrar Empréstimos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/filial">Cadastrar Filiais</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/funcionario">Cadastrar Funcionários</a>
-        </li>
-          <li class="nav-item">
-              <a class="nav-link" href="/livros">Cadastrar Livros</a>
-          </li>
-      </ul>
-  </nav>
+            <li class="nav-item">
+                <a class="nav-link" href="/livros">Cadastrar Livros</a>
+            </li>
+        </ul>
+    </nav>
 
     <div class="container">
-      <form method="POST">
-        <div class="col-md-12 order-md-1">
+      <div class="col-md-12 order-md-1">
+        <div class="py-3 text-center">
+          <h2><b>Editar Registro</b></h2>
+        </div>
+      </div>
+
+      <% clientes.forEach(function(details) { %>
+        <form method="POST">
           <div class="row">
-            <div class="py-3 col-sm-8">
-              <h2><b>Editar registro</b></h2>
+            <div class="col-md-6 mb-3">
+              <label for="primeiroNome">Primeiro nome</label>
+              <input type="text" class="form-control" value="<%= details.nome %>" name="nome" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="lastName">Último nome</label>
+              <input type="text" class="form-control" value="<%= details.sobrenome %>" name="sobrenome" required>
             </div>
           </div>
-        </div>
-        <div class="table-responsive">
-          <div class="table-wrapper">
-            <table class="table table-striped table-hover table-bordered" id="myTable">
-              <thead>
-                <tr>
-                  <th class="form-title">Nome</th>
-                  <th class="form-title">Sobrenome</th>
-                  <th class="form-title">E-mail</th>
-                  <th class="form-title">Contato 1</th>
-                  <th class="form-title">Contato 2</th>
-                  <th class="form-title">Endereço</th>
-                  <th class="form-title">Complemento</th>
-                  <th class="form-title">CEP</th>
-                  <th class="form-title">Cidade</th>
-                  <th class="form-title">Estado</th>
-                </tr>
-              </thead>
 
-              <tbody>
-                <% clientes.forEach(function(details) { %>
-                <form action="/edit-cliente/<%= details._id %>">
-                  <td>
-                    <input type="text" value="<%= details.nome %>" name="nome" required/>
-                  </td>
-                  <td>
-                    <input type="text" value="<%= details.sobrenome %>" name="sobrenome" required/>
-                  </td>
-                  <td>
-                    <input type="email" value="<%= details.email %>" name="email" required/>
-                  </td>
-                  <td>
-                    <input type="text" value="<%= details.contato1 %>" name="contato1" maxlength="14" required/>
-                  </td>
-                  <td>
-                    <input type="text" value="<%= details.contato2 %>" name="contato2" maxlength="14"/>
-                  </td>
-                  <td>
-                    <input type="text" value="<%= details.endereco %>" name="endereco" required/>
-                  </td>
-                  <td>
-                    <input type="text" value="<%= details.complemento %>" name="complemento" required/>
-                  </td>
-                  <td>
-                    <input type="text" value="<%= details.cep %>" name="cep" maxlength="10" required/>
-                  </td>
-                  <td>
-                    <input type="text" value="<%= details.cidade %>" name="cidade" required/>
-                  </td>
-                  <td>
-                    <select value="<%= details.estado %>" name="estado">
-                      <option value="Selecionar" disabled>Selecionar</option>
-                      <option value="AC">AC</option>
-                      <option value="AL">AL</option>
-                      <option value="AM">AM</option>
-                      <option value="AP">AP</option>
-                      <option value="BA">BA</option>
-                      <option value="CE">CE</option>
-                      <option value="DF">DF</option>
-                      <option value="ES">ES</option>
-                      <option value="GO">GO</option>
-                      <option value="MA">MA</option>
-                      <option value="MG">MG</option>
-                      <option value="MS">MS</option>
-                      <option value="MT">MT</option>
-                      <option value="PA">PA</option>
-                      <option value="PB">PB</option>
-                      <option value="PE">PE</option>
-                      <option value="PI">PI</option>
-                      <option value="PR">PR</option>
-                      <option value="RJ">RJ</option>
-                      <option value="RN">RN</option>
-                      <option value="RO">RO</option>
-                      <option value="RR">RR</option>
-                      <option value="RS">RS</option>
-                      <option value="SC">SC</option>
-                      <option value="SE">SE</option>
-                      <option value="SP">SP</option>
-                      <option value="TO">TO</option>
-                    </select>
-                  </td>
-                </form>
-                <% }) %>
-              </tbody>
-            </table>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="email">E-mail</label>
+              <input type="email" class="form-control" value="<%= details.email %>" name="email" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="contato2">Contato 1</label>
+              <input type="text" class="form-control" value="<%= details.contato1 %>" name="contato1" maxlength="11" required>
+            </div>
           </div>
-        </div>
-        <a href="/show-cliente" class="btn btn-primary">Voltar</a>
-        &nbsp;
-        <input type="submit" class="btn btn-success" value="Confirmar"/>
-      </form>
+
+          <div class="mb-3">
+            <label for="endereco">Endereço</label>
+            <input type="text" class="form-control" value="<%= details.endereco %>" name="endereco" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="complemento">Complemento</label>
+            <input type="text" class="form-control" value="<%= details.complemento %>" name="complemento" required>
+          </div>
+
+          <div class="row">
+            <div class="col-md-3 mb-3">
+              <label for="cep">CEP</label>
+              <input type="text" class="form-control" value="<%= details.cep %>" name="cep" maxlength="8" required>
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="cidade">Cidade</label>
+              <input type="text" class="form-control" value="<%= details.cidade %>" name="cidade" required>
+            </div>
+
+            <div class="col-md-5 mb-3">
+              <label for="estado">Estado</label>
+              <select class="form-control" value="<%= details.estado %>" name="estado">
+                <option value="Selecionar" disabled>Selecionar</option>
+                <option value="AC">AC</option>
+                <option value="AL">AL</option>
+                <option value="AM">AM</option>
+                <option value="AP">AP</option>
+                <option value="BA">BA</option>
+                <option value="CE">CE</option>
+                <option value="DF">DF</option>
+                <option value="ES">ES</option>
+                <option value="GO">GO</option>
+                <option value="MA">MA</option>
+                <option value="MG">MG</option>
+                <option value="MS">MS</option>
+                <option value="MT">MT</option>
+                <option value="PA">PA</option>
+                <option value="PB">PB</option>
+                <option value="PE">PE</option>
+                <option value="PI">PI</option>
+                <option value="PR">PR</option>
+                <option value="RJ">RJ</option>
+                <option value="RN">RN</option>
+                <option value="RO">RO</option>
+                <option value="RR">RR</option>
+                <option value="RS">RS</option>
+                <option value="SC">SC</option>
+                <option value="SE">SE</option>
+                <option value="SP">SP</option>
+                <option value="TO">TO</option>
+              </select>
+            </div>
+          </div>
+          <a href="/show-cliente" class="btn btn-primary">Voltar</a>
+          &nbsp;
+          <input type="submit" class="btn btn-success" value="Confirmar"/>
+        </form>
+      <% }) %>
     </div>
   </body>
 </html>

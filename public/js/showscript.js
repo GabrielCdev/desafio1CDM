@@ -34,16 +34,6 @@ function contatoMask() {
   }
 }
 
-function contatoMask2() {
-  let contato2 = document.getElementById('contato2');
-  
-  if (contato2.value.length === 2) {
-    contato2.value += " ";
-  } else if (contato2.value.length === 8 || contato2.value.length === 9) {
-    contato2.value += "-";
-  }
-}
-
 // Máscara de CEP
 function cepMask() {
   let cep = document.getElementById('cep');
