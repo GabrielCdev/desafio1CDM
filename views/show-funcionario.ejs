@@ -69,6 +69,7 @@
                                 <th class="form-title">Função</th>
                                 <th class="form-title">Cidade</th>
                                 <th class="form-title">Contato</th>
+                                <th class="form-title">Salário</th>
                                 <th class="form-title">Ação</th>
                             </tr>
                         </thead>
@@ -103,6 +104,9 @@
                                     </td>
                                     <td class="inputs-bd">
                                         <%= details.contato %>
+                                    </td>
+                                    <td class="inputs-bd">
+                                        <%= details.salario %>
                                     </td>
                                     <td class="inputs-bd">
                                         <a href="/edit-funcionario/<%= details._id %>" class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>

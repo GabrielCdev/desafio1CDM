@@ -383,6 +383,7 @@ app.route('/edit-funcionario/:id').get((req, res) => {
     let endereco = req.body.endereco
     let funcao = req.body.funcao
     let contato = req.body.contato
+    let salario = req.body.salario
 
     db.collection('funcionario').updateOne({ _id: ObjectId(id) }, {
         $set: {
@@ -395,13 +396,14 @@ app.route('/edit-funcionario/:id').get((req, res) => {
             estado: estado,
             endereco: endereco,
             funcao: funcao,
-            contato: contato
+            contato: contato,
+            salario: salario
         }
     }, (err, result) => {
         if (err) return res.send(err)
         
         res.redirect('/show-funcionario')
-        console.log('atualizado no banco de dados')
+        console.log('Atualizado no banco de dados')
     })
 })
 
