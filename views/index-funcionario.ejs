@@ -7,7 +7,9 @@
         <link rel="canonical" href="/docs/4.5/examples/checkout/">
         <link rel="stylesheet" href="/CSS/Main.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="/js/jquery.min.js"></script>
         <script src="/JS/Main.js"></script>
+        <script src="/js/jquery.mask.min.js"></script>
         <title>CRUDNode</title>
     </head>
 
@@ -59,7 +61,7 @@
 
                             <div class="col-md-6 mb-3">
                                 <label for="lastName">Sobrenome</label>
-                                <input type="text" class="form-control" name="sobrenome" value="" required>
+                                <input type="text" class="form-control" name="sobrenome" id="sobrenome" required>
 
                                 <div class="invalid-feedback">
                                     Parametro obrigatório
@@ -71,7 +73,7 @@
                         <div class="row">
                             <div class="col-md-4 mb-3">
                                 <label for="cpf">Cpf</label>
-                                <input type="text" class="form-control" id="cpf" placeholder="" name="cpf" maxlength="14" onkeyup="MascaraCPF()" required>
+                                <input type="text" class="form-control" id="cpf" name="cpf" required>
                                 <div class="invalid-feedback">
                                     Preencha este campo
                                 </div>
@@ -80,7 +82,7 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="cep">Cep</label>
-                                <input type="text" class="form-control" id="cep" placeholder="" name="cep" maxlength="10" onkeyup="cepMask()" required>
+                                <input type="text" class="form-control" id="cep" name="cep" required>
                                 <div class="invalid-feedback">
                                     Preencha este campo
                                 </div>
@@ -88,7 +90,7 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="cidade">Cidade</label>
-                                <input type="text" class="form-control" name="cidade" required>
+                                <input type="text" class="form-control" name="cidade" id="cidade" readonly>
                                 <div class="invalid-feedback">
                                     Preencha este campo
                                 </div>
@@ -98,42 +100,12 @@
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <label for="cep">Estado</label>
-                                    <select class="form-control" name="estado" required>
-                                        <option value="Selecionar" disabled>Selecionar</option>
-                                        <option value="Acre">AC</option>
-                                        <option value="Alagoas">AL</option>
-                                        <option value="Amazonas">AM</option>
-                                        <option value="Amapá">AP</option>
-                                        <option value="Bahia">BA</option>
-                                        <option value="Ceará">CE</option>
-                                        <option value="Distrito Federal">DF</option>
-                                        <option value="Espírito Santo">ES</option>
-                                        <option value="Goiânia">GO</option>
-                                        <option value="Maranhão">MA</option>
-                                        <option value="Minas Gerais">MG</option>
-                                        <option value="Mato Grosso do Sul">MS</option>
-                                        <option value="Mato Gross">MT</option>
-                                        <option value="Pará">PA</option>
-                                        <option value="Paraíba">PB</option>
-                                        <option value="Pernambuco">PE</option>
-                                        <option value="Piauí">PI</option>
-                                        <option value="Paraná">PR</option>
-                                        <option value="Rio de Janeiro">RJ</option>
-                                        <option value="Rio Grande do Norte">RN</option>
-                                        <option value="Rondônia">RO</option>
-                                        <option value="Roraima">RR</option>
-                                        <option value="Rio Grande do Sul">RS</option>
-                                        <option value="Santa Catarina">SC</option>
-                                        <option value="Sergipe">SE</option>
-                                        <option value="São Paulo">SP</option>
-                                        <option value="Tocantins">TO</option>
-                                    </select>
-
+                                    <input type="text" class="form-control" name="estado" id="estado" readonly>
                                 </div>
 
                                 <div class="col-md-4 mb-3">
                                     <label for="endereco">Endereco</label>
-                                    <input type="text" class="form-control" name="endereco" placeholder="" required>
+                                    <input type="text" class="form-control" name="endereco" id="endereco" readonly>
 
                                     <div class="invalid-feedback">
                                         Preencha este campo
@@ -153,7 +125,7 @@
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <label for="contato" class=" text-center">Contato</label>
-                                    <input type="text" class="form-control" id="contato" placeholder="(99) 99999-9999" name="contato" maxlength="12" onkeyup="contatoMask()" required>
+                                    <input type="text" class="form-control" id="contato" placeholder="(99) 99999-9999" name="contato" required>
                                 </div>
 
                                 <div class="col-md-4 mb-3">
@@ -167,7 +139,7 @@
                                 
                                 <div class="col-md-4 mb-3">
                                     <label for="salario">Salario</label>
-                                    <input type="text" class="form-control" name="salario" placeholder=" Salario" onkeypress=" return maskNum()" required>
+                                    <input type="text" class="form-control" name="salario" id="salario" required>
                                                 
                                     <div class="invalid-feedback">
                                         Preencha este campo

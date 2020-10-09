@@ -1,23 +1,4 @@
-// mascara de cpf
-function MascaraCPF() {
 
-    let cpf = document.getElementById('cpf')
-    if (cpf.value.length == 3 || cpf.value.length == 7) {
-        cpf.value += "."
-    } else if (cpf.value.length == 11) {
-        cpf.value += "-"
-    }
-}
-// mascara de cep
-function cepMask() {
-
-    let cep = document.getElementById('cep')
-    if (cep.value.length == 2) {
-        cep.value += "."
-    } else if (cep.value.length == 6) {
-        cep.value += "-"
-    }
-}
 // filtro da pesquisa de filial
 function myFunction() {
     let input, filter, table, tr, td, i, txtValue;
@@ -41,25 +22,62 @@ function myFunction() {
         }
     }
 }
-// Máscara de contato
-function contatoMask() {
-    let contato = document.getElementById('contato');
+
+
+// Máscaras em jquery
+$(document).ready(() => {
+    $('#cep').mask('00.000-000');
+    $('#contato').mask('(00) 00000-0000');
+    $('#cpf').mask('000.000.000-00');
+    $('#salario').mask('000000000');
+  })
+
+  // Gera CEP
+$(document).ready(function() {
+    function limpa_formulário_cep() {
+        // Limpa valores do formulário de cep.
+        $("#cidade").val("");
+        $("#estado").val("");
+        $("#endereco").val("");
+    }
     
-    let er = /[^0-9-./]/;
-    er.lastIndex = 0;
- 
-    if (contato.value.length === 7 || contato.value.length === 8) {
-      contato.value += "-";
-    } else if (er.test(contato.value)) {
-      contato.value = "";
-    }
-  }
-  /* function maskNum(evt) {
-    evt = (evt) ? evt : window.event;
-    let charCode = (evt.which) ? evt.which : evt.keyCode;
-    if ((charCode < 48 && charCode < 58) || ((charCode > 95 && charCode < 106))){
-        return true;
-    }
-    return false
-}
-*/
+    // Event blur()
+    $("#cep").blur(function() {
+      //Nova variável "CEP" somente com dígitos.
+      let cep = $(this).val().replace(/\D/g, '');
+  
+      //Verifica se campo CEP possui valor informado.
+      if (cep != "") {
+        let validacep = /^[0-9]{8}$/;
+  
+        //Valida o formato do CEP.
+        if (validacep.test(cep)) {
+          //Preenche os campos com "..." enquanto consulta webservice.
+          $("#cidade").val("...");
+          $("#estado").val("...");
+          $("#endereco").val("...");
+  
+          //Consulta o webservice viacep.com.br/
+          $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+            if (!("erro" in dados)) {
+              //Atualiza os campos com os valores da consulta.
+              $("#cidade").val(dados.localidade);
+              $("#estado").val(dados.uf);
+              $("#endereco").val(dados.logradouro);
+            } else {
+              //CEP pesquisado não foi encontrado.
+              limpa_formulário_cep();
+              alert("CEP não encontrado.");
+            }
+          });
+        } else {
+          //CEP inválido.
+          limpa_formulário_cep();
+          alert("Formato de CEP inválido.");
+        }
+      } else {
+        // CEP sem valor, limpa formulário.
+        limpa_formulário_cep();
+      }
+    });
+  });

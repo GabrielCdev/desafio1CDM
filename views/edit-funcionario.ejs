@@ -10,7 +10,9 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script src="/js/jquery.min.js"></script>
         <script src="/JS/Main.js"></script>
+        <script src="/js/jquery.mask.min.js"></script>
         <title>CRUDNode</title>
     </head>
 
@@ -62,23 +64,18 @@
                                             <div class="col-md-6 mb-3">
                                                 <label for="lastName">Sobrenome</label>
                                                 <input type="text" class="form-control" name="sobrenome" value="<%= details.sobrenome %>" required>
-                
-                                             
                                             </div>
                                         </div>
                 
                                         <div class="row">
                                             <div class="col-md-4 mb-3">
                                                 <label for="cpf">Cpf</label>
-                                                <input type="text" class="form-control" value="<%= details.cpf %>" onkeyup="MascaraCPF()" name="cpf" maxlength="14">
-                                               
+                                                <input type="text" class="form-control" value="<%= details.cpf %>" id="cpf" name="cpf" required>
                                             </div>
-                
                 
                                             <div class="col-md-4 mb-3">
                                                 <label for="cep">Cep</label>
-                                                <input type="text" class="form-control" name="cep" maxlength="10" onkeyup="cepMask()" value="<%= details.cep %>" required>
-                                                
+                                                <input type="text" class="form-control" name="cep" id="cep" value="<%= details.cep %>" required>   
                                             </div>
                 
                                             <div class="col-md-4 mb-3">
@@ -90,42 +87,12 @@
                                             <div class="row">
                                                 <div class="col-md-4 mb-3">
                                                     <label for="cep">Estado</label>
-                                                    <select class="form-control" value="<%= details.estado %>" name="estado">
-                                                        <option value="Selecionar" disabled>Selecionar</option>
-                                                        <option value="Acre">AC</option>
-                                                        <option value="Alagoas">AL</option>
-                                                        <option value="Amazonas">AM</option>
-                                                        <option value="Amapá">AP</option>
-                                                        <option value="Bahia">BA</option>
-                                                        <option value="Ceará">CE</option>
-                                                        <option value="Distrito Federal">DF</option>
-                                                        <option value="Espírito Santo">ES</option>
-                                                        <option value="Goiânia">GO</option>
-                                                        <option value="Maranhão">MA</option>
-                                                        <option value="Minas Gerais">MG</option>
-                                                        <option value="Mato Grosso do Sul">MS</option>
-                                                        <option value="Mato Gross">MT</option>
-                                                        <option value="Pará">PA</option>
-                                                        <option value="Paraíba">PB</option>
-                                                        <option value="Pernambuco">PE</option>
-                                                        <option value="Piauí">PI</option>
-                                                        <option value="Paraná">PR</option>
-                                                        <option value="Rio de Janeiro">RJ</option>
-                                                        <option value="Rio Grande do Norte">RN</option>
-                                                        <option value="Rondônia">RO</option>
-                                                        <option value="Roraima">RR</option>
-                                                        <option value="Rio Grande do Sul">RS</option>
-                                                        <option value="Santa Catarina">SC</option>
-                                                        <option value="Sergipe">SE</option>
-                                                        <option value="São Paulo">SP</option>
-                                                        <option value="Tocantins">TO</option>
-                                                    </select>
-                
+                                                    <input type="text" class="form-control" value="<%= details.estado %>" name="estado" required>
                                                 </div>
                 
                                                 <div class="col-md-4 mb-3">
                                                     <label for="endereco">Endereco</label>
-                                                    <input type="text" class="form-control" name="endereco" placeholder="" value="<%= details.endereco %>" required>
+                                                    <input type="text" class="form-control" name="endereco" value="<%= details.endereco %>" required>
                 
                                                 </div>
                 
@@ -137,7 +104,7 @@
                                                     <div class="row">
                                                         <div class="col-md-4 mb-3">
                                                             <label for="contato" class=" text-center">Contato</label>
-                                                            <input type="text" class="form-control" id="contato" placeholder="(99) 99999-9999" name="contato" value="<%= details.contato %>" onkeyup="contatoMask()" required>
+                                                            <input type="text" class="form-control" id="contato" name="contato" value="<%= details.contato %>" required>
                                                         </div>
                 
                                                         <div class="col-md-4 mb-3">
@@ -147,7 +114,7 @@
                                                         </div>
                                                         <div class="col-md-4 mb-3">
                                                                 <label for="salario">Salario</label>
-                                                                <input type="text" class="form-control" name="salario" placeholder=" Salario" value="<%= details.salario %>" onkeypress=" return maskNum()" required>
+                                                                <input type="text" class="form-control" name="salario" placeholder=" Salario" value="<%= details.salario %>" required>
                                                                
                                                     </div>
                             <div class="row align-items-center mx-auto">
