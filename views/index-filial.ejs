@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/logo/favicon.ico" />
+    <link rel="canonical" href="/docs/4.5/examples/checkout/"> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="/js/funcoes.js"></script>
     <title>CRUD Library</title>
@@ -41,52 +42,37 @@
     <form action="/show-filial" method="POST">
       <div class="container-fluid">
         <div class="jumbotron jumbotron-fluid">
-          <div class="container-fluid">
+
             <div class="row">
-              <div id="div1" class="col-sm-5">
+              <div id="div1" class="col-md-4">
                 <label>Nome:</label>
-                <input type="text" name="Inpname" required>
-              </div>
-              
-              <div class="col-sm-5">
+                <input type="text" class="form-control" name="Inpname" required>
+                <br>
+   
                 <label>Nome fantasia:</label>
-                <input type="text" name="InpFantasia" required>
-              </div>
-            </div>
-
-            <div  class="row">
-              <div id="div2" class="col-sm-5">
+                <input type="text" class="form-control" name="InpFantasia" required>
                 <br>
-                <label>CNPJ:</label>
-                <input onkeyup="cnpjFunc()" maxlength="18" id="inpCnpj" type="text" name="inpCnpj" required>
-              </div>
+             
+                <label for="inpCnpj">CNPJ:</label>
+                <input class="form-control" maxlength="18" id="inpCnpj" type="text" name="inpCnpj" required>
+                <br>
               
-              <div class="col-md-5">
-                <br>
                 <label>Email:</label>
-                <input type="email" name="InpEmail" required>
+                <input type="email" class="form-control" name="InpEmail" required>
               </div>
-            </div>
-
-            <br>
+         
             
-            <div class="row">
-              <div id="div3" class="col-sm-5">
-                <label>Contato:</label>
-                <input id="contato" maxlength="14" onkeyup="contatoFunc()" type="text" name="InpTel" required>
-              </div>
+              <div id="div2" class="col-md-4">
+                <label for="InpTel">Contato:</label>
+                <input type="text" class="form-control" maxlength="14" id="InpTel" name="InpTel" placeholder="(00) 00000-0000" required>
+                <br>    
               
-              <div class="col-sm-5">
                 <label>Endereço:</label>
-                <input id="input" type="text" name="InpEnd" required>
-              </div>
-            </div>
-
-            <div  class="row">
-              <div id="div4" class="col-sm-5">
+                <input id="input" class="form-control" type="text" name="InpEnd" required>
                 <br>
+
                 <label>Estado:</label>
-                <select class="select h-50 w-50" id="estado" name="InpEs">
+                <select class="select h-40 w-50 form-control" id="estado" name="InpEs" required>
                   <option value="">Selecionar</option>
                   <option>AC</option>
                   <option>AL</option>
@@ -116,16 +102,16 @@
                   <option>SE</option>
                   <option>TO</option>
                 </select>
-              </div>
-              
-              <div class="col-md-5">
                 <br>
+              
                 <label>Cidade:</label>
-                <input id="input" type="text" name="InpCity" required>
+                <input id="input" type="text" class="form-control" name="InpCity" required>
               </div>
-            </div>  
+            </div>
+           </div> 
+
+
           </div>
-        </div> 
       </div>
       <button type="submit">Cadastrar</button> 
       <button type="reset">Limpar</button>

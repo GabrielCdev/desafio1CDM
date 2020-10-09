@@ -5,6 +5,7 @@
     <link rel="shortcut icon" href="/logo/favicon.ico" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/editFilial.css"/>
+    <script src="/js/funcoes.js"></script>
     <title>CRUD Library</title>
   </head>
 
@@ -41,62 +42,56 @@
       <form action="/edit-filial/<%= details._id %>" method="POST">
         <div class="container-fluid">
           <div class="jumbotron jumbotron-fluid">
-            <div class="container-fluid">
+
               <div class="row">
-                <div class="col-sm-5">
-                  <label>Nome:</label>
-                  <input type="text" id="nome" value="<%= details.Inpname %>" name="Inpname">
+                <div class="col-md-5">
+                  <label id="lblNome">Nome:</label>
+                  <input type="text" class="form-control" id="nome" value="<%= details.Inpname %>" name="Inpname">
                 </div>    
 
-                <div class="col-sm-7">
-                  <label>Nome fantasia:</label>
-                  <input type="text" id="fantasia" value="<%= details.InpFantasia %>" name="InpFantasia">
+                <div class="col-md-7 mb-3">
+                  <label id="lblfantasia">Nome fantasia:</label>
+                  <input type="text" class="form-control" id="fantasia" value="<%= details.InpFantasia %>" name="InpFantasia">
                 </div>
               </div>
-            </div>
-
-            <br>
-            <div id="div2" class="row">
-              <div class="col-sm-3">
-                <labe id="lblCnpj">CNPJ:</label>
-                <input type="text" id="cnpj" maxlength="18" value="<%= details.inpCnpj %>" name="inpCnpj">
-              </div>
-
-              <div id="div3" class="col-sm-4">
-                <label>Contato:</label>
-                <input type="text" id="telefone" maxlength="14" value="<%= details.InpTel %>" name="InpTel">
-              </div>
-
-              <div class="col-md-5">
-                <label>Email:</label>
-                <input type="text" id="email" value="<%= details.InpEmail %>" name="InpEmail">
-              </div>
-            </div>
-
-            <br>
+            
             <div class="row">
-              <div class="col-sm-10">
-                <label id="lblEnd">Endereço:</label>
-                <input type="text" id="endereco" value="<%= details.InpEnd %>" name="InpEnd">
+              <div class="col-md-3">
+                <label id="Cnpj">CNPJ:</label>
+                <input type="text" id="inpCnpj" class="form-control" maxlength="18" value="<%= details.inpCnpj %>" name="inpCnpj">
+              </div>
+
+              <div class="col-md-4">
+                <label id="lblCont">Contato:</label>
+                <input type="text" class="form-control" id="InpTel" maxlength="14" value="<%= details.InpTel %>" name="InpTel">
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <label id="lblEmail">Email:</label>
+                <input type="text" class="form-control" id="email" value="<%= details.InpEmail %>" name="InpEmail">
               </div>
             </div>
 
-            <div id="div4" class="row">
-              <div class="col-sm-4">
-                <br>
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <label id="lblEnd">Endereço:</label>
+                <input type="text" class="form-control" id="endereco" value="<%= details.InpEnd %>" name="InpEnd">
+              </div>
+            </div>
+
+            <div" class="row">
+              <div class="col-md-4">
                 <label id="lblCid">Cidade:</label>
-                <input type="text" id="cidade" value="<%= details.InpCity %>" name="InpCity">
+                <input type="text" class="form-control" id="cidade" value="<%= details.InpCity %>" name="InpCity">
               </div>
             
-              <div class="col-md-6">
-                <br>
-                <label>Estado:</label>
-                <input type="text" id="estado" value="<%= details.InpEs %>" name="InpEs">
+              <div class="col-md-4">
+                <label id="lblEst">Estado:</label>
+                <input type="text" class="form-control" id="estado" value="<%= details.InpEs %>" name="InpEs">
               </div>
             </div>  
-            <br />
-          </div>     
-        </div>
+          </div>
+        </div>      
        
     <button id="btnVoltar"><a href="/show-filial">Voltar</a></button> 
     <button id="btnEditar" type="submit">Editar</button>

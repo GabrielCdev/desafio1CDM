@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="/logo/favicon.ico" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
     <title>CRUD Library</title>
     <link rel="stylesheet" href="/css/showFilial.css">
   </head>
@@ -65,7 +69,7 @@
               <td><%= details.InpEnd %></td>
               <td><%= details.InpCity %></td>
               <td><%= details.InpEs %></td>
-              <td><a href="/edit-filial/<%= details._id %>">Editar</a> - <a href="/delete-filial/<%= details._id %>">Deletar</a></td>
+              <td><a href="/edit-filial/<%= details._id %>"class="edit" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a> - <a href="/delete-filial/<%= details._id %>"class="delete" title="Remover" data-toggle="tooltip" ><i class="material-icons">&#xE872;</i></a></td>
             </tr>
           <% }) %>
         </tbody>

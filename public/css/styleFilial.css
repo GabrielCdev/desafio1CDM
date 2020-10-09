@@ -25,7 +25,8 @@ button {
 button:hover {opacity: 1}
 
 h1 {
-  margin-left: 480px;
+  padding-top: 15px;
+  margin-left: 500px;
 }
 
 input{
