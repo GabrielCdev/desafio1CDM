@@ -48,7 +48,7 @@
                     <h4 class=" mb-4">Dados do funcionário</h4>
                     <form class="dados-funcionario" novalidate>
                         <div class="row">
-                            <div class="col-md-5 mb-3 mx-1">
+                            <div class="col-md-6 mb-3">
                                 <label for="primeiroNome">Nome</label>
                                 <input type="text" class="form-control" id="nome" name="nome" required>
 
@@ -69,7 +69,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="mb-3 mx-3 w-25">
+                            <div class="col-md-4 mb-3">
                                 <label for="cpf">Cpf</label>
                                 <input type="text" class="form-control" id="cpf" placeholder="" name="cpf" maxlength="14" onkeyup="MascaraCPF()" required>
                                 <div class="invalid-feedback">
@@ -78,7 +78,7 @@
                             </div>
 
 
-                            <div class="mb-3 mx-5 w-25">
+                            <div class="col-md-4 mb-3">
                                 <label for="cep">Cep</label>
                                 <input type="text" class="form-control" id="cep" placeholder="" name="cep" maxlength="10" onkeyup="cepMask()" required>
                                 <div class="invalid-feedback">
@@ -86,7 +86,7 @@
                                 </div>
                             </div>
 
-                            <div class="mb-3 mx-5 w-25">
+                            <div class="col-md-4 mb-3">
                                 <label for="cidade">Cidade</label>
                                 <input type="text" class="form-control" name="cidade" required>
                                 <div class="invalid-feedback">
@@ -96,7 +96,7 @@
                         </div>
 
                             <div class="row">
-                                <div class="mb-3 mx-3 w-25">
+                                <div class="col-md-4 mb-3">
                                     <label for="cep">Estado</label>
                                     <select class="form-control" name="estado" required>
                                         <option value="Selecionar" disabled>Selecionar</option>
@@ -131,7 +131,7 @@
 
                                 </div>
 
-                                <div class="mb-3 mx-5 w-25">
+                                <div class="col-md-4 mb-3">
                                     <label for="endereco">Endereco</label>
                                     <input type="text" class="form-control" name="endereco" placeholder="" required>
 
@@ -140,7 +140,7 @@
                                     </div>
                                 </div>
 
-                                <div class="mb-3 mx-5 w-25">
+                                <div class="col-md-4 mb-3">
                                     <label for="funcao">Função</label>
                                     <input type="text" class="form-control" name="funcao" placeholder="EX: Gestor do RH" required>
 
@@ -150,21 +150,21 @@
                                 </div>
                             </div>
                                     <div class="row">
-                                        <div class="mb-3 mx-3 w-25">
+                                        <div class="col-md-4 mb-3">
                                             <label for="contato" class=" text-center">Contato</label>
                                             <input type="text" class="form-control" id="contato" placeholder="(99) 99999-9999" name="contato" maxlength="13" onkeyup="contatoMask()" required>
                                         </div>
 
-                                        <div class="mb-3 mx-5 w-25">
+                                        <div class="col-md-4 mb-3">
                                             <label for="email">Filial</label>
                                             <input type="text" class="form-control" name="filial" placeholder=" EX: Pituba" required>
-                                            <div class="invalid-feedback">
+                                            <div class="invalid-feedback">  
                                                 Preencha este campo
                                             </div>
                                         </div>
-                                        <div class="mb-3 mx-5 w-25">
+                                        <div class="col-md-4 mb-3">
                                                 <label for="salario">Salario</label>
-                                                <input type="text" class="form-control" name="salario" placeholder=" Salario" required>
+                                                <input type="text" class="form-control" name="salario" placeholder=" Salario" onkeypress=" return maskNum()" required>
                                                 <div class="invalid-feedback">
                                                     Preencha este campo
                                                 </div>

@@ -51,3 +51,12 @@ function contatoMask() {
       contato.value += "-";
     }
   }
+  /* function maskNum(evt) {
+    evt = (evt) ? evt : window.event;
+    let charCode = (evt.which) ? evt.which : evt.keyCode;
+    if ((charCode < 48 && charCode < 58) || ((charCode > 95 && charCode < 106))){
+        return true;
+    }
+    return false
+}
+*/

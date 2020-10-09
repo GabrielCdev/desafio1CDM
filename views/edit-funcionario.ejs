@@ -51,100 +51,112 @@
                     </div>
                 </div>
 
-                <div class="table-responsive">
-                    <div class="table-wrapper">
-                        <table class="table table-striped table-hover table-bordered" id="myTable">
-                            <thead>
-                                <tr>
-                                    <th class="form-title">Filial</th>
-                                    <th class="form-title">Nome</th>
-                                    <th class="form-title">Sobrenome</th>
-                                    <th class="form-title">Cpf</th>
-                                    <th class="form-title">Cep</th>
-                                    <th class="form-title">Cidade</th>
-                                    <th class="form-title">Estado</th>
-                                    <th class="form-title">Endereço</th>
-                                    <th class="form-title">Função</th>
-                                    <th class="form-title">Contato</th>
-                                    <th class="form-title">Salário</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
                                 <% funcionario.forEach(function(details) { %>
-                                <form action="/edit-funcionario/<%= details._id %>">
-                                    <td>
-                                        <input type="text" value="<%= details.filial%>" name="filial">
-                                    </td>
-                                    <td>
-                                        <input type="text" value="<%= details.nome%>" name="nome">
-                                    </td>
-                                    <td>
-                                        <input type="text" value="<%= details.sobrenome%>" name="sobrenome">
-                                    </td>
-                                    <td>
-                                        <input type="text" value="<%= details.cpf%>" name="cpf">
-                                    </td>
-                                    <td>
-                                        <input type="text" value="<%= details.cep%>" name="cep">
-                                    </td>
-                                    <td>
-                                        <input type="text" value="<%= details.cidade%>" name="cidade">
-                                    </td>
-                                    <td>
-                                        <select value="<%= details.estado %>" name="estado">
-                                          <option value="Selecionar" disabled>Selecionar</option>
-                                          <option value="AC">AC</option>
-                                          <option value="AL">AL</option>
-                                          <option value="AM">AM</option>
-                                          <option value="AP">AP</option>
-                                          <option value="BA">BA</option>
-                                          <option value="CE">CE</option>
-                                          <option value="DF">DF</option>
-                                          <option value="ES">ES</option>
-                                          <option value="GO">GO</option>
-                                          <option value="MA">MA</option>
-                                          <option value="MG">MG</option>
-                                          <option value="MS">MS</option>
-                                          <option value="MT">MT</option>
-                                          <option value="PA">PA</option>
-                                          <option value="PB">PB</option>
-                                          <option value="PE">PE</option>
-                                          <option value="PI">PI</option>
-                                          <option value="PR">PR</option>
-                                          <option value="RJ">RJ</option>
-                                          <option value="RN">RN</option>
-                                          <option value="RO">RO</option>
-                                          <option value="RR">RR</option>
-                                          <option value="RS">RS</option>
-                                          <option value="SC">SC</option>
-                                          <option value="SE">SE</option>
-                                          <option value="SP">SP</option>
-                                          <option value="TO">TO</option>
-                                        </select>
-                                      </td>
-                                    <td>
-                                        <input type="text" value="<%= details.endereco%>" name="endereco">
-                                    </td>
-                                    <td>
-                                        <input type="text" value="<%= details.funcao%>" name="funcao">
-                                    </td>
-                                    <td>
-                                        <input type="text" value="<%= details.contato%>" name="contato">
-                                    </td>
-                                    <td>
-                                        <input type="text" value="<%= details.salario%>" name="salario">
-                                    </td>
-                                </form>
-                                <% }) %>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <a href="/show-funcionario" class="btn btn-primary">Voltar</a>
-                &nbsp;
-                <input type="submit" class="btn btn-success" value="Confirmar"/>
+                                    <form method="POST">
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="primeiroNome">Nome</label>
+                                                <input type="text" class="form-control" id="nome" value="<%= details.nome %>" name="nome" required>
+                                            </div>
+                
+                                            <div class="col-md-6 mb-3">
+                                                <label for="lastName">Sobrenome</label>
+                                                <input type="text" class="form-control" name="sobrenome" value="<%= details.sobrenome %>" required>
+                
+                                             
+                                            </div>
+                                        </div>
+                
+                                        <div class="row">
+                                            <div class="col-md-4 mb-3">
+                                                <label for="cpf">Cpf</label>
+                                                <input type="text" class="form-control" value="<%= details.cpf %>" onkeyup="MascaraCPF()" name="cpf" maxlength="14">
+                                               
+                                            </div>
+                
+                
+                                            <div class="col-md-4 mb-3">
+                                                <label for="cep">Cep</label>
+                                                <input type="text" class="form-control" name="cep" maxlength="10" onkeyup="cepMask()" value="<%= details.cep %>" required>
+                                                
+                                            </div>
+                
+                                            <div class="col-md-4 mb-3">
+                                                <label for="cidade">Cidade</label>
+                                                <input type="text" class="form-control" value="<%= details.cidade %>" name="cidade" required>
+                                            </div>
+                                        </div>
+                
+                                            <div class="row">
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="cep">Estado</label>
+                                                    <select class="form-control" value="<%= details.estado %>" name="estado">
+                                                        <option value="Selecionar" disabled>Selecionar</option>
+                                                        <option value="Acre">AC</option>
+                                                        <option value="Alagoas">AL</option>
+                                                        <option value="Amazonas">AM</option>
+                                                        <option value="Amapá">AP</option>
+                                                        <option value="Bahia">BA</option>
+                                                        <option value="Ceará">CE</option>
+                                                        <option value="Distrito Federal">DF</option>
+                                                        <option value="Espírito Santo">ES</option>
+                                                        <option value="Goiânia">GO</option>
+                                                        <option value="Maranhão">MA</option>
+                                                        <option value="Minas Gerais">MG</option>
+                                                        <option value="Mato Grosso do Sul">MS</option>
+                                                        <option value="Mato Gross">MT</option>
+                                                        <option value="Pará">PA</option>
+                                                        <option value="Paraíba">PB</option>
+                                                        <option value="Pernambuco">PE</option>
+                                                        <option value="Piauí">PI</option>
+                                                        <option value="Paraná">PR</option>
+                                                        <option value="Rio de Janeiro">RJ</option>
+                                                        <option value="Rio Grande do Norte">RN</option>
+                                                        <option value="Rondônia">RO</option>
+                                                        <option value="Roraima">RR</option>
+                                                        <option value="Rio Grande do Sul">RS</option>
+                                                        <option value="Santa Catarina">SC</option>
+                                                        <option value="Sergipe">SE</option>
+                                                        <option value="São Paulo">SP</option>
+                                                        <option value="Tocantins">TO</option>
+                                                    </select>
+                
+                                                </div>
+                
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="endereco">Endereco</label>
+                                                    <input type="text" class="form-control" name="endereco" placeholder="" value="<%= details.endereco %>" required>
+                
+                                                </div>
+                
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="funcao">Função</label>
+                                                    <input type="text" class="form-control" name="funcao" placeholder="EX: Gestor do RH" value="<%= details.funcao %>" required>
+                                                </div>
+                                            </div>
+                                                    <div class="row">
+                                                        <div class="col-md-4 mb-3">
+                                                            <label for="contato" class=" text-center">Contato</label>
+                                                            <input type="text" class="form-control" id="contato" placeholder="(99) 99999-9999" name="contato" value="<%= details.contato %>" onkeyup="contatoMask()" required>
+                                                        </div>
+                
+                                                        <div class="col-md-4 mb-3">
+                                                            <label for="email">Filial</label>
+                                                            <input type="text" class="form-control" name="filial" placeholder=" EX: Pituba" value="<%= details.filial %>" required>
+                                                         
+                                                        </div>
+                                                        <div class="col-md-4 mb-3">
+                                                                <label for="salario">Salario</label>
+                                                                <input type="text" class="form-control" name="salario" placeholder=" Salario" value="<%= details.salario %>" onkeypress=" return maskNum()" required>
+                                                               
+                                                    </div>
+                            <div class="row align-items-center mx-auto">
+                            <a href="/show-funcionario" class="btn btn-primary">Voltar</a>
+                            &nbsp;
+                            <input type="submit" class="btn btn-success" value="Confirmar"/>
+                        </div>
             </form>
+            <% }) %>
         </div>
     </body>
 </html>
