@@ -2,13 +2,15 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>Desafio 1 - CRUD</title>
     <link rel="shortcut icon" href="/logo/favicon.ico" />
     <link rel="canonical" href="/docs/4.5/examples/checkout/">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="/js/jquery.min.js"></script>
     <script src="/js/showscript.js"></script>
+    <script src="/js/jquery.mask.min.js"></script>
   </head>
 
   <body>
@@ -45,46 +47,53 @@
         </div>
       </div>
 
-      <% clientes.forEach(function(details) { %>
-        <form method="POST">
+      <form method="POST">
+        <% clientes.forEach(function(details) { %>
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="primeiroNome">Primeiro nome</label>
-              <input type="text" class="form-control" value="<%= details.nome %>" name="nome" required>
+              <input type="text" class="form-control" value="<%= details.nome %>" id="nome" name="nome" required>
             </div>
 
             <div class="col-md-6 mb-3">
               <label for="lastName">Último nome</label>
-              <input type="text" class="form-control" value="<%= details.sobrenome %>" name="sobrenome" required>
+              <input type="text" class="form-control" value="<%= details.sobrenome %>" id="sobrenome" name="sobrenome" required>
             </div>
           </div>
 
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="email">E-mail</label>
-              <input type="email" class="form-control" value="<%= details.email %>" name="email" required>
+              <input type="email" class="form-control" value="<%= details.email %>" id="email" name="email" required>
             </div>
 
             <div class="col-md-6 mb-3">
               <label for="contato2">Contato 1</label>
-              <input type="text" class="form-control" value="<%= details.contato1 %>" name="contato1" maxlength="11" required>
+              <input type="text" class="form-control" value="<%= details.contato1 %>" id="contato1" name="contato1" maxlength="11" required>
             </div>
-          </div>
-
-          <div class="mb-3">
-            <label for="endereco">Endereço</label>
-            <input type="text" class="form-control" value="<%= details.endereco %>" name="endereco" required>
-          </div>
-
-          <div class="mb-3">
-            <label for="complemento">Complemento</label>
-            <input type="text" class="form-control" value="<%= details.complemento %>" name="complemento" required>
           </div>
 
           <div class="row">
             <div class="col-md-3 mb-3">
               <label for="cep">CEP</label>
-              <input type="text" class="form-control" value="<%= details.cep %>" name="cep" maxlength="8" required>
+              <input type="text" class="form-control" value="<%= details.cep %>" id="cep" name="cep" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="rua">Rua</label>
+              <input type="text" class="form-control" name="rua" value="<%= details.rua %>" required>
+            </div>
+
+            <div class="col-md-3 mb-3">
+              <label for="numero">Número</label>
+              <input type="text" class="form-control" value="<%= details.numero %>" name="numero" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label for="complemento">Complemento</label>
+              <input type="text" class="form-control" value="<%= details.complemento %>" name="complemento" required>
             </div>
 
             <div class="col-md-4 mb-3">
@@ -92,44 +101,16 @@
               <input type="text" class="form-control" value="<%= details.cidade %>" name="cidade" required>
             </div>
 
-            <div class="col-md-5 mb-3">
+            <div class="col-md-4 mb-3">
               <label for="estado">Estado</label>
-              <select class="form-control" value="<%= details.estado %>" name="estado">
-                <option value="AC">AC</option>
-                <option value="AL">AL</option>
-                <option value="AM">AM</option>
-                <option value="AP">AP</option>
-                <option value="BA">BA</option>
-                <option value="CE">CE</option>
-                <option value="DF">DF</option>
-                <option value="ES">ES</option>
-                <option value="GO">GO</option>
-                <option value="MA">MA</option>
-                <option value="MG">MG</option>
-                <option value="MS">MS</option>
-                <option value="MT">MT</option>
-                <option value="PA">PA</option>
-                <option value="PB">PB</option>
-                <option value="PE">PE</option>
-                <option value="PI">PI</option>
-                <option value="PR">PR</option>
-                <option value="RJ">RJ</option>
-                <option value="RN">RN</option>
-                <option value="RO">RO</option>
-                <option value="RR">RR</option>
-                <option value="RS">RS</option>
-                <option value="SC">SC</option>
-                <option value="SE">SE</option>
-                <option value="SP">SP</option>
-                <option value="TO">TO</option>
-              </select>
+              <input type="text" class="form-control" value="<%= details.estado %>" name="estado" required>
             </div>
           </div>
           <a href="/show-cliente" class="btn btn-primary">Voltar</a>
           &nbsp;
           <input type="submit" class="btn btn-success" value="Confirmar"/>
-        </form>
-      <% }) %>
+        <% }) %>
+      </form>
     </div>
   </body>
 </html>
