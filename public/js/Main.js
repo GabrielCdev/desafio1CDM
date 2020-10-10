@@ -1,4 +1,3 @@
-
 // filtro da pesquisa de filial
 function myFunction() {
     let input, filter, table, tr, td, i, txtValue;
@@ -29,7 +28,7 @@ $(document).ready(() => {
     $('#cep').mask('00.000-000');
     $('#contato').mask('(00) 00000-0000');
     $('#cpf').mask('000.000.000-00');
-    $('#salario').mask('000000000');
+    $('#salario').maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: true});
   })
 
   // Gera CEP
